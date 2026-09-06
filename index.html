@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YashLab — Insights, Financial Tech & Digital Innovations</title>
+  <meta name="description" content="Explore expert financial analyses, insurance planning frameworks, cloud computing architectures, and global market insights on YashLab.">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Google AdSense Account Verification -->
+  <meta name="google-adsense-account" content="ca-pub-9216546431290162">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9216546431290162" crossorigin="anonymous"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --primary: #3b82f6;
+      --primary-glow: rgba(59, 130, 246, 0.15);
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(9, 13, 22, 0.8);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .logo span { color: var(--primary); }
+    nav { display: flex; gap: 1.5rem; align-items: center; }
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: #fff; }
+    .hero {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.35rem 1rem;
+      background: var(--primary-glow);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      color: #60a5fa;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #fff 0%, #93c5fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+    }
+    .articles-grid {
+      max-width: 1200px;
+      margin: 0 auto 4rem;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(59, 130, 246, 0.4);
+    }
+    .card-cat {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #38bdf8;
+      margin-bottom: 0.75rem;
+    }
+    .card h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+    .card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+    }
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: #6b7280;
+      border-top: 1px solid var(--border);
+      padding-top: 1rem;
+    }
+    footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 1.5rem;
+      background: #06090e;
+    }
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; }
+    .footer-links a:hover { color: #fff; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="/" class="logo">Yash<span>Lab</span></a>
+      <nav>
+        <a href="#articles">Articles</a>
+        <a href="#about">About</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="badge">Research & Financial Insights</div>
+      <h1>Empowering Decisions with Deep Industry Analytics</h1>
+      <p class="subtitle">Curated editorial breakdowns covering high-level insurance strategies, distributed edge networks, and quantitative financial risk management.</p>
+    </section>
+
+    <section id="articles" class="articles-grid">
+      <div class="card">
+        <div>
+          <div class="card-cat">Healthcare & Actuarial</div>
+          <h2>The Future of Health Insurance & Medical Underwriting in 2026</h2>
+          <p>Analyzing modern predictive underwriting algorithms, preventative care cost structures, and preventative wellness incentives shaping modern health coverage.</p>
+        </div>
+        <div class="card-footer">
+          <span>7 min read</span>
+          <span>By YashLab Research</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="card-cat">Wealth & Protection</div>
+          <h2>Comprehensive Estate & Life Insurance Strategy for Families</h2>
+          <p>Navigating irrevocable life insurance trusts (ILIT), generational wealth transfer, and long-term liquidity protection for private estates.</p>
+        </div>
+        <div class="card-footer">
+          <span>9 min read</span>
+          <span>By Financial Desk</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="card-cat">Cloud Engineering</div>
+          <h2>High-Performance Edge Cloud Computing & CDN Architectures</h2>
+          <p>Minimizing Time to First Byte (TTFB) using geo-distributed Anycast routing, automated Brotli compression, and serverless edge compute.</p>
+        </div>
+        <div class="card-footer">
+          <span>6 min read</span>
+          <span>By Tech Insights</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <div>
+          <div class="card-cat">Quantitative Finance</div>
+          <h2>Algorithmic Forex Trading & Systematic Risk Protocols</h2>
+          <p>Exploring mean-reversion algorithms, volatility arbitrage modeling, and institutional stop-loss execution mechanics in foreign exchange markets.</p>
+        </div>
+        <div class="card-footer">
+          <span>10 min read</span>
+          <span>By Quant Labs</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" style="max-width: 900px; margin: 0 auto 4rem; padding: 0 1.5rem;">
+      <div class="card" style="padding: 2.5rem;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fff;">About YashLab</h2>
+        <p style="margin-bottom: 1rem;">YashLab is an independent digital publication dedicated to offering high-quality educational articles, technology deep-dives, and financial planning frameworks. Our mission is to demystify complex technical and economic concepts into clear, actionable knowledge.</p>
+        <p>All content is original, rigorously reviewed, and created for knowledge-seekers, researchers, and digital enthusiasts worldwide.</p>
+      </div>
+    </section>
+
+    <section id="privacy" style="max-width: 900px; margin: 0 auto 4rem; padding: 0 1.5rem;">
+      <div class="card" style="padding: 2.5rem;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fff;">Privacy Policy & Cookie Disclosures</h2>
+        <p style="margin-bottom: 1rem;">At YashLab (yashlab.me), your privacy is of paramount importance to us. We do not collect personally identifiable information from visitors unless voluntarily submitted through contact channels.</p>
+        <p style="margin-bottom: 1rem;"><strong>Google AdSense & DoubleClick DART Cookies:</strong> Google, as a third-party vendor, uses cookies to serve ads on our site. Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visit to our site and/or other sites on the Internet.</p>
+        <p>Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener" style="color: #60a5fa;">Google Ad Settings</a> or <a href="https://www.aboutads.info" target="_blank" rel="noopener" style="color: #60a5fa;">AboutAds.info</a>.</p>
+      </div>
+    </section>
+
+    <section id="contact" style="max-width: 900px; margin: 0 auto 4rem; padding: 0 1.5rem;">
+      <div class="card" style="padding: 2.5rem; text-align: center;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: #fff;">Contact Us</h2>
+        <p style="margin-bottom: 1.5rem;">Have questions, feedback, or business inquiries regarding YashLab?</p>
+        <p><strong style="color: #fff;">Email:</strong> <a href="mailto:support@yashlab.me" style="color: #60a5fa; text-decoration: none;">support@yashlab.me</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-container">
+      <div>&copy; 2026 YashLab. All rights reserved.</div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#privacy">Privacy Policy</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
