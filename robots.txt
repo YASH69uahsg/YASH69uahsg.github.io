@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://yashlab.me/sitemap.xml
