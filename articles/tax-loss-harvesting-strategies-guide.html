@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tax-Loss Harvesting Strategies: Offsetting Capital Gains Legally and Strategically | YashLab</title>
+  <meta name="description" content="A quantitative guide to identifying unrealized equity losses, navigating wash-sale restrictions, and boosting after-tax investment yields.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://yashlab.me/articles/tax-loss-harvesting-strategies-guide.html">
+  
+  <!-- Google AdSense Verification -->
+  <meta name="google-adsense-account" content="ca-pub-9216546431290162">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9216546431290162" crossorigin="anonymous"></script>
+
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Tax-Loss Harvesting Strategies: Offsetting Capital Gains Legally and Strategically","description":"A quantitative guide to identifying unrealized equity losses, navigating wash-sale restrictions, and boosting after-tax investment yields.","datePublished":"August 21, 2026","author":{"@type":"Person","name":"Elena Rostova","jobTitle":"Certified Financial Planner & Actuarial Consultant"},"publisher":{"@type":"Organization","name":"YashLab","url":"https://yashlab.me"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Does the wash-sale rule apply across different brokerage accounts?","acceptedAnswer":{"@type":"Answer","text":"Yes. Tax authorities aggregate all personal brokerage accounts, spouse accounts, and corporate entity holdings when determining wash-sale compliance."}},{"@type":"Question","name":"Can crypto losses be harvested to offset equity gains?","acceptedAnswer":{"@type":"Answer","text":"In many jurisdictions, crypto assets are categorized under specific digital asset tax regimes with differing ring-fencing rules; consult a certified tax practitioner to confirm allowable cross-asset offsets."}}]}]}
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --border: rgba(255, 255, 255, 0.08);
+      --primary: #3b82f6;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(9, 13, 22, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .header-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #fff;
+      text-decoration: none;
+    }
+    .logo span { color: var(--primary); }
+    .back-link {
+      color: #60a5fa;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+    article {
+      max-width: 800px;
+      margin: 3rem auto 5rem;
+      padding: 0 1.5rem;
+    }
+    .meta-cat {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #38bdf8;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    .article-meta {
+      display: flex;
+      gap: 0.75rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .excerpt {
+      font-size: 1.05rem;
+      color: #cbd5e1;
+      border-left: 4px solid var(--primary);
+      padding-left: 1.25rem;
+      margin-bottom: 2rem;
+      background: rgba(59, 130, 246, 0.05);
+      padding: 1rem 1.25rem;
+      border-radius: 0 0.75rem 0.75rem 0;
+    }
+    .toc {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .toc h3 {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+    .toc ul { list-style: none; }
+    .toc li { margin-bottom: 0.4rem; }
+    .toc a {
+      color: #93c5fd;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    .toc a:hover { text-decoration: underline; }
+    .content-section { margin-bottom: 2.5rem; }
+    .content-section h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1rem;
+      line-height: 1.3;
+    }
+    .content-section p {
+      margin-bottom: 1rem;
+      color: #cbd5e1;
+      font-size: 0.95rem;
+    }
+    .content-section ul {
+      margin: 1rem 0 1.5rem 1.25rem;
+      color: #cbd5e1;
+      font-size: 0.92rem;
+    }
+    .content-section li { margin-bottom: 0.5rem; }
+    .faq-box {
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+      padding-top: 2rem;
+    }
+    .faq-box h3 { font-size: 1.3rem; color: #fff; margin-bottom: 1.5rem; }
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .faq-q { font-weight: 700; color: #fff; margin-bottom: 0.5rem; font-size: 0.95rem; }
+    .faq-a { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+    .author-bio {
+      margin-top: 3rem;
+      background: rgba(59, 130, 246, 0.05);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .author-info h4 { color: #fff; font-size: 0.95rem; }
+    .author-info p { color: var(--text-muted); font-size: 0.85rem; }
+    footer {
+      margin-top: auto;
+      border-top: 1px solid var(--border);
+      padding: 2rem 1.5rem;
+      background: #06090e;
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    footer a { color: #60a5fa; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <a href="/" class="logo">Yash<span>Lab</span></a>
+      <a href="/#articles" class="back-link">← All Research Papers</a>
+    </div>
+  </header>
+
+  <article>
+    <div class="meta-cat">Finance & Wealth</div>
+    <h1>Tax-Loss Harvesting Strategies: Offsetting Capital Gains Legally and Strategically</h1>
+    <div class="article-meta">
+      <span>August 21, 2026</span>
+      <span>•</span>
+      <span>7 min read</span>
+      <span>•</span>
+      <span>By Elena Rostova</span>
+    </div>
+
+    <div class="excerpt">A quantitative guide to identifying unrealized equity losses, navigating wash-sale restrictions, and boosting after-tax investment yields.</div>
+
+    <div class="toc">
+      <h3>Table of Contents</h3>
+      <ul>
+        <li><a href="#sec-0">1. The Economics of Tax-Loss Harvesting</a></li><li><a href="#sec-1">2. Navigating the Wash-Sale Rule and Substitute Assets</a></li>
+        <li><a href="#faq">Frequently Asked Questions (FAQs)</a></li>
+      </ul>
+    </div>
+
+    
+      <div id="sec-0" class="content-section">
+        <h2>1. The Economics of Tax-Loss Harvesting</h2>
+        <p>Tax-loss harvesting involves deliberately selling securities currently trading at a loss to offset realized capital gains generated elsewhere in your portfolio, thereby minimizing current-year taxable liabilities.</p><p>By strategically harvesting losses, investors effectively defer taxes into future periods, allowing the retained capital to continue compounding inside income-generating index assets.</p>
+        <ul><li>Directly offsets both short-term and long-term realized capital gains.</li><li>Permits up to statutory limits in excess losses to offset ordinary salary income annually.</li><li>Indefinite carry-forward of unused capital losses to offset future taxable capital realizations.</li></ul>
+      </div>
+    
+      <div id="sec-1" class="content-section">
+        <h2>2. Navigating the Wash-Sale Rule and Substitute Assets</h2>
+        <p>The wash-sale rule disallows tax loss deductions if the investor purchases a substantially identical security within 30 days before or after the sale.</p><p>Experienced wealth managers bypass this limitation by rotating capital into economically correlated but structurally distinct substitute assets—such as shifting from an S&P 500 index ETF into a Total Stock Market index fund.</p>
+        
+      </div>
+    
+
+    <div id="faq" class="faq-box">
+      <h3>Frequently Asked Questions</h3>
+      
+        <div class="faq-item">
+          <div class="faq-q">Q: Does the wash-sale rule apply across different brokerage accounts?</div>
+          <div class="faq-a">Yes. Tax authorities aggregate all personal brokerage accounts, spouse accounts, and corporate entity holdings when determining wash-sale compliance.</div>
+        </div>
+      
+        <div class="faq-item">
+          <div class="faq-q">Q: Can crypto losses be harvested to offset equity gains?</div>
+          <div class="faq-a">In many jurisdictions, crypto assets are categorized under specific digital asset tax regimes with differing ring-fencing rules; consult a certified tax practitioner to confirm allowable cross-asset offsets.</div>
+        </div>
+      
+    </div>
+
+    <div class="author-bio">
+      <div class="avatar">E</div>
+      <div class="author-info">
+        <h4>Elena Rostova</h4>
+        <p>Certified Financial Planner & Actuarial Consultant. Contributes independent research and analysis for YashLab publications.</p>
+      </div>
+    </div>
+  </article>
+
+  <footer>
+    <p>&copy; 2026 YashLab. All rights reserved. <a href="/">Return to Homepage</a></p>
+  </footer>
+</body>
+</html>

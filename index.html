@@ -3,11 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YashLab — Insights, Financial Tech & Digital Innovations</title>
-  <meta name="description" content="Explore expert financial analyses, insurance planning frameworks, cloud computing architectures, and global market insights on YashLab.">
+  <title>YashLab — Insights, Financial Tech &amp; Digital Innovations</title>
+  <meta name="description" content="Explore expert financial analyses, healthcare insurance evaluations, cloud computing architectures, and global market insights on YashLab.">
   <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://yashlab.me/">
   
-  <!-- Google AdSense Account Verification -->
+  <!-- Google AdSense Verification -->
   <meta name="google-adsense-account" content="ca-pub-9216546431290162">
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9216546431290162" crossorigin="anonymous"></script>
 
@@ -37,7 +38,7 @@
     }
     header {
       border-bottom: 1px solid var(--border);
-      background: rgba(9, 13, 22, 0.8);
+      background: rgba(9, 13, 22, 0.85);
       backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
@@ -73,7 +74,7 @@
     nav a:hover { color: #fff; }
     .hero {
       max-width: 1200px;
-      margin: 3rem auto;
+      margin: 3.5rem auto 2.5rem;
       padding: 0 1.5rem;
       text-align: center;
     }
@@ -101,15 +102,34 @@
     .subtitle {
       color: var(--text-muted);
       font-size: 1.15rem;
-      max-width: 680px;
-      margin: 0 auto 2.5rem;
+      max-width: 720px;
+      margin: 0 auto 2rem;
     }
+    .categories-bar {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 3rem;
+    }
+    .cat-btn {
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.05);
+      color: #cbd5e1;
+      border: 1px solid var(--border);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .cat-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
     .articles-grid {
       max-width: 1200px;
       margin: 0 auto 4rem;
       padding: 0 1.5rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 1.5rem;
     }
     .card {
@@ -120,6 +140,8 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      text-decoration: none;
+      color: inherit;
       transition: transform 0.2s, border-color 0.2s;
     }
     .card:hover {
@@ -145,6 +167,7 @@
       font-size: 0.875rem;
       color: var(--text-muted);
       margin-bottom: 1.25rem;
+      line-height: 1.5;
     }
     .card-footer {
       display: flex;
@@ -155,6 +178,7 @@
       border-top: 1px solid var(--border);
       padding-top: 1rem;
     }
+    .read-more { color: #60a5fa; font-weight: 600; }
     footer {
       margin-top: auto;
       border-top: 1px solid var(--border);
@@ -181,9 +205,10 @@
     <div class="header-container">
       <a href="/" class="logo">Yash<span>Lab</span></a>
       <nav>
-        <a href="#articles">Articles</a>
+        <a href="#articles">All Articles (21)</a>
         <a href="#about">About</a>
         <a href="#privacy">Privacy</a>
+        <a href="#disclaimer">Disclaimer</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -191,82 +216,301 @@
 
   <main>
     <section class="hero">
-      <div class="badge">Research & Financial Insights</div>
+      <div class="badge">Research &amp; Financial Insights • 2026 Editions</div>
       <h1>Empowering Decisions with Deep Industry Analytics</h1>
-      <p class="subtitle">Curated editorial breakdowns covering high-level insurance strategies, distributed edge networks, and quantitative financial risk management.</p>
+      <p class="subtitle">Curated editorial breakdowns covering healthcare policy economics, wealth governance trusts, and distributed edge cloud infrastructure.</p>
+      
+      <div class="categories-bar">
+        <span class="cat-btn">Health &amp; Insurance (6)</span>
+        <span class="cat-btn">Finance &amp; Wealth (5)</span>
+        <span class="cat-btn">Cloud &amp; DevOps (5)</span>
+      </div>
     </section>
 
     <section id="articles" class="articles-grid">
-      <div class="card">
-        <div>
-          <div class="card-cat">Healthcare & Actuarial</div>
-          <h2>The Future of Health Insurance & Medical Underwriting in 2026</h2>
-          <p>Analyzing modern predictive underwriting algorithms, preventative care cost structures, and preventative wellness incentives shaping modern health coverage.</p>
-        </div>
-        <div class="card-footer">
-          <span>7 min read</span>
-          <span>By YashLab Research</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div>
-          <div class="card-cat">Wealth & Protection</div>
-          <h2>Comprehensive Estate & Life Insurance Strategy for Families</h2>
-          <p>Navigating irrevocable life insurance trusts (ILIT), generational wealth transfer, and long-term liquidity protection for private estates.</p>
-        </div>
-        <div class="card-footer">
-          <span>9 min read</span>
-          <span>By Financial Desk</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div>
-          <div class="card-cat">Cloud Engineering</div>
-          <h2>High-Performance Edge Cloud Computing & CDN Architectures</h2>
-          <p>Minimizing Time to First Byte (TTFB) using geo-distributed Anycast routing, automated Brotli compression, and serverless edge compute.</p>
-        </div>
-        <div class="card-footer">
-          <span>6 min read</span>
-          <span>By Tech Insights</span>
-        </div>
-      </div>
-
-      <div class="card">
-        <div>
-          <div class="card-cat">Quantitative Finance</div>
-          <h2>Algorithmic Forex Trading & Systematic Risk Protocols</h2>
-          <p>Exploring mean-reversion algorithms, volatility arbitrage modeling, and institutional stop-loss execution mechanics in foreign exchange markets.</p>
-        </div>
-        <div class="card-footer">
-          <span>10 min read</span>
-          <span>By Quant Labs</span>
-        </div>
-      </div>
+      
+        <a href="/articles/senior-health-insurance-plans-2026.html" class="card">
+          <div>
+            <div class="card-cat">Health & Insurance</div>
+            <h2>Senior Citizen Health Insurance Plans in 2026: Comprehensive Coverage, Copay & Clauses</h2>
+            <p>A complete guide to evaluating healthcare policies, critical illness riders, zero-copay waivers, and pre-existing disease protocols for individuals aged 60 and above.</p>
+          </div>
+          <div class="card-footer">
+            <span>8 min read • Dr. Alistair Vance</span>
+            <span class="read-more">Read Paper →</span>
+          </div>
+        </a>
+      
+        <a href="/articles/zero-copay-vs-deductibles-health-insurance.html" class="card">
+          <div>
+            <div class="card-cat">Health & Insurance</div>
+            <h2>Zero Copay vs. Deductibles in Health Insurance: Cost-Benefit Analysis for 2026</h2>
+            <p>A mathematical deep dive into how copay percentages, aggregate deductibles, and out-of-pocket maximums impact your long-term healthcare expenditure.</p>
+          </div>
+          <div class="card-footer">
+            <span>7 min read • Elena Rostova</span>
+            <span class="read-more">Read Paper →</span>
+          </div>
+        </a>
+      
+        <a href="/articles/critical-illness-riders-vs-standalone.html" class="card">
+          <div>
+            <div class="card-cat">Health & Insurance</div>
+            <h2>Critical Illness Riders vs. Standalone Policies: When and How to Upgrade</h2>
+            <p>Evaluating lump-sum benefit policies against indemnity riders for cancer, stroke, myocardial infarction, and end-stage organ failure.</p>
+          </div>
+          <div class="card-footer">
+            <span>9 min read • Dr. Alistair Vance</span>
+            <span class="read-more">Read Paper →</span>
+          </div>
+        </a>
+      
+        <a href="/articles/pre-existing-disease-waiting-periods-guide.html" class="card">
+          <div>
+            <div class="card-cat">Health & Insurance</div>
+            <h2>Pre-Existing Disease (PED) Waiting Periods: The 2026 Regulatory Blueprint</h2>
+            <p>A deep examination of underwriting disclosures, continuous coverage portability, and legal guidelines governing pre-existing condition claims.</p>
+          </div>
+          <div class="card-footer">
+            <span>7 min read • Elena Rostova</span>
+            <span class="read-more">Read Paper →</span>
+          </div>
+        </a>
+      
+        <a href="/articles/group-vs-individual-health-insurance-gap.html" class="card">
+          <div>
+            <div class="card-cat">Health & Insurance</div>
+            <h2>Corporate Group vs. Individual Health Insurance: Bridging the Post-Employment Gap</h2>
+            <p>Why relying exclusively on employer-provided health coverage leaves families financially vulnerable, and how to execute a cost-effective migration.</p>
+          </div>
+          <div class="card-footer">
+            <span>6 min read • Elena Rostova</span>
+            <span class="read-more">Read Paper →</span>
+          </div>
+        </a>
+      
+        <a href="/articles/cashless-hospital-claims-settlement-guide.html" class="card">
+          <div>
+            <div class="card-cat">Health & Insurance</div>
+            <h2>Mastering the Cashless Hospitalization Claims Workflow: Step-by-Step Settlement</h2>
+            <p>How to avoid pre-authorization rejections, eliminate non-medical deductions, and expedite third-party administrator (TPA) clearances.</p>
+          </div>
+          <div class="card-footer">
+            <span>7 min read • Dr. Alistair Vance</span>
+            <span class="read-more">Read Paper →</span>
+          </div>
+        </a>
+      
+        <a href="/articles/top-estate-planning-life-insurance.html" class="card">
+          <div>
+            <div class="card-cat">Finance & Wealth</div>
+            <h2>Estate Planning and Life Insurance Trusts: Securing Multi-Generational Wealth Transfer</h2>
+            <p>Strategic estate structuring utilizing irrevocable life insurance trusts (ILIT) to minimize estate tax liabilities and preserve liquidity for legal heirs.</p>
+          </div>
+          <div class="card-footer">
+            <span>8 min read • Elena Rostova</span>
+            <span class="read-more">Read Paper →</span>
+          </div>
+        </a>
+      
+        <a href="/articles/high-yield-dividend-growth-investing-2026.html" class="card">
+          <div>
+            <div class="card-cat">Finance & Wealth</div>
+            <h2>High-Yield Dividend Growth vs. Capital Appreciation: Portfolio Resilience in 2026</h2>
+            <p>Balancing cash-flow generation against equity compounding through Dividend Aristocrats, free cash flow payout ratios, and dividend reinvestment (DRIP).</p>
+          </div>
+          <div class="card-footer">
+            <span>9 min read • Rajiv Singhania</span>
+            <span class="read-more">Read Paper →</span>
+          </div>
+        </a>
+      
+        <a href="/articles/forex-risk-management-strategies.html" class="card">
+          <div>
+            <div class="card-cat">Finance & Wealth</div>
+            <h2>Institutional Forex Risk Management: Hedging Volatility in Emerging Corridors</h2>
+            <p>Frameworks for cross-border treasury desks to mitigate foreign exchange volatility via forward contracts, zero-cost currency collars, and synthetic swaps.</p>
+          </div>
+          <div class="card-footer">
+            <span>8 min read • Rajiv Singhania</span>
+            <span class="read-more">Read Paper →</span>
+          </div>
+        </a>
+      
+        <a href="/articles/tax-loss-harvesting-strategies-guide.html" class="card">
+          <div>
+            <div class="card-cat">Finance & Wealth</div>
+            <h2>Tax-Loss Harvesting Strategies: Offsetting Capital Gains Legally and Strategically</h2>
+            <p>A quantitative guide to identifying unrealized equity losses, navigating wash-sale restrictions, and boosting after-tax investment yields.</p>
+          </div>
+          <div class="card-footer">
+            <span>7 min read • Elena Rostova</span>
+            <span class="read-more">Read Paper →</span>
+          </div>
+        </a>
+      
+        <a href="/articles/commercial-reits-investment-yield-analysis.html" class="card">
+          <div>
+            <div class="card-cat">Finance & Wealth</div>
+            <h2>Commercial REITs vs. Physical Real Estate: Yield, Liquidity, and Risk Comparison</h2>
+            <p>Comparing Real Estate Investment Trusts against direct residential property acquisitions across rental yields, vacancy risk, and capital requirements.</p>
+          </div>
+          <div class="card-footer">
+            <span>8 min read • Rajiv Singhania</span>
+            <span class="read-more">Read Paper →</span>
+          </div>
+        </a>
+      
+        <a href="/articles/edge-cloud-cdn-architecture.html" class="card">
+          <div>
+            <div class="card-cat">Cloud & DevOps</div>
+            <h2>Next-Gen Edge Cloud & Low-Latency CDN Architecture for Enterprise Workloads</h2>
+            <p>Optimizing globally distributed computing with Anycast routing, automated edge cache invalidation, and serverless WASM runtimes.</p>
+          </div>
+          <div class="card-footer">
+            <span>8 min read • Marcus Chen</span>
+            <span class="read-more">Read Paper →</span>
+          </div>
+        </a>
+      
+        <a href="/articles/zero-trust-network-access-ztna-architecture.html" class="card">
+          <div>
+            <div class="card-cat">Cloud & DevOps</div>
+            <h2>Zero-Trust Network Access (ZTNA) vs. Legacy Corporate VPNs: Enterprise Security Guide</h2>
+            <p>Replacing brittle perimeter VPN models with identity-aware micro-segmentation, continuous posture verification, and ephemeral mutual TLS.</p>
+          </div>
+          <div class="card-footer">
+            <span>9 min read • Marcus Chen</span>
+            <span class="read-more">Read Paper →</span>
+          </div>
+        </a>
+      
+        <a href="/articles/kubernetes-finops-cloud-cost-governance.html" class="card">
+          <div>
+            <div class="card-cat">Cloud & DevOps</div>
+            <h2>FinOps for Enterprise Kubernetes: Eliminating Cloud Compute Wastage in 2026</h2>
+            <p>Right-sizing container resource allocations, spot instance orchestration, and horizontal pod autoscaling architectures to slash AWS and GCP billing.</p>
+          </div>
+          <div class="card-footer">
+            <span>8 min read • Marcus Chen</span>
+            <span class="read-more">Read Paper →</span>
+          </div>
+        </a>
+      
+        <a href="/articles/distributed-api-gateway-rate-limiting-architecture.html" class="card">
+          <div>
+            <div class="card-cat">Cloud & DevOps</div>
+            <h2>Distributed API Gateway Architecture: Rate Limiting and High-Throughput Ingress</h2>
+            <p>Designing resilient API gateways using Redis sliding window algorithms, token bucket throttling, and circuit breakers for mission-critical microservices.</p>
+          </div>
+          <div class="card-footer">
+            <span>7 min read • Marcus Chen</span>
+            <span class="read-more">Read Paper →</span>
+          </div>
+        </a>
+      
+        <a href="/articles/enterprise-disaster-recovery-multi-region-replication.html" class="card">
+          <div>
+            <div class="card-cat">Cloud & DevOps</div>
+            <h2>Enterprise Disaster Recovery: Multi-Region Database Replication & Active-Active Topologies</h2>
+            <p>Achieving sub-minute Recovery Time Objective (RTO) and near-zero Recovery Point Objective (RPO) through consensus protocols and geodistributed data layers.</p>
+          </div>
+          <div class="card-footer">
+            <span>8 min read • Marcus Chen</span>
+            <span class="read-more">Read Paper →</span>
+          </div>
+        </a>
+      
+        <a href="/articles/dental-and-vision-insurance-supplemental-coverage.html" class="card">
+          <div>
+            <div class="card-cat">Health & Insurance</div>
+            <h2>Dental and Vision Supplemental Insurance: Evaluating Out-of-Pocket Economics</h2>
+            <p>Why standard health policies exclude routine dental and optical care, and how standalone dental-vision riders hedge predictable outpatient costs.</p>
+          </div>
+          <div class="card-footer">
+            <span>7 min read • Dr. Alistair Vance</span>
+            <span class="read-more">Read Paper →</span>
+          </div>
+        </a>
+      
+        <a href="/articles/top-opd-health-insurance-plans-india.html" class="card">
+          <div>
+            <div class="card-cat">Health & Insurance</div>
+            <h2>OPD Health Insurance Coverage: Evaluating Pharmacy Sub-Limits and Doctor Consultation Riders</h2>
+            <p>A complete operational guide to outpatient department (OPD) coverage, cashless pharmacy debit cards, and wellness reward ecosystems.</p>
+          </div>
+          <div class="card-footer">
+            <span>8 min read • Dr. Alistair Vance</span>
+            <span class="read-more">Read Paper →</span>
+          </div>
+        </a>
+      
+        <a href="/articles/retirement-corpus-safe-withdrawal-rates.html" class="card">
+          <div>
+            <div class="card-cat">Finance & Wealth</div>
+            <h2>Retirement Corpus Structuring: The 4% Rule vs. Dynamic Guardrails in 2026</h2>
+            <p>Stress-testing the classic Bengen 4% safe withdrawal rate against contemporary longevity risks, sequence-of-returns hazards, and bond market real yields.</p>
+          </div>
+          <div class="card-footer">
+            <span>9 min read • Elena Rostova</span>
+            <span class="read-more">Read Paper →</span>
+          </div>
+        </a>
+      
+        <a href="/articles/term-insurance-riders-worth-buying.html" class="card">
+          <div>
+            <div class="card-cat">Finance & Wealth</div>
+            <h2>Term Insurance Riders: Evaluating Accidental Disability, Premium Waivers, and Terminal Illness</h2>
+            <p>Unpacking which life insurance riders deliver genuine actuarial value versus those that unnecessarily inflate your annual premium commitments.</p>
+          </div>
+          <div class="card-footer">
+            <span>7 min read • Rajiv Singhania</span>
+            <span class="read-more">Read Paper →</span>
+          </div>
+        </a>
+      
+        <a href="/articles/zero-downtime-database-migrations-enterprise.html" class="card">
+          <div>
+            <div class="card-cat">Cloud & DevOps</div>
+            <h2>Zero-Downtime Database Migrations: The Expand-and-Contract Architecture with CDC</h2>
+            <p>A technical walkthrough of executing schema alterations, table re-indexing, and major database engine upgrades in high-throughput production environments.</p>
+          </div>
+          <div class="card-footer">
+            <span>9 min read • Marcus Chen</span>
+            <span class="read-more">Read Paper →</span>
+          </div>
+        </a>
+      
     </section>
 
     <section id="about" style="max-width: 900px; margin: 0 auto 4rem; padding: 0 1.5rem;">
       <div class="card" style="padding: 2.5rem;">
         <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fff;">About YashLab</h2>
-        <p style="margin-bottom: 1rem;">YashLab is an independent digital publication dedicated to offering high-quality educational articles, technology deep-dives, and financial planning frameworks. Our mission is to demystify complex technical and economic concepts into clear, actionable knowledge.</p>
-        <p>All content is original, rigorously reviewed, and created for knowledge-seekers, researchers, and digital enthusiasts worldwide.</p>
+        <p style="margin-bottom: 1rem;">YashLab (yashlab.me) is an independent digital publication dedicated to offering high-quality educational research, technology deep-dives, and financial planning frameworks. Our mission is to demystify complex technical, actuarial, and economic concepts into clear, actionable knowledge.</p>
+        <p>All content is original, rigorously reviewed by credentialed contributors, and published for researchers, policyholders, and digital engineers worldwide.</p>
+      </div>
+    </section>
+
+    <section id="disclaimer" style="max-width: 900px; margin: 0 auto 4rem; padding: 0 1.5rem;">
+      <div class="card" style="padding: 2.5rem;">
+        <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fff;">Editorial &amp; Regulatory Disclaimer</h2>
+        <p style="margin-bottom: 1rem;">Content published on YashLab is strictly for general educational and informational purposes. Discussions of healthcare insurance, critical illness riders, and medical plans do not constitute medical advice or formal underwriting solicitation. Financial analysis of equities, REITs, and foreign exchange does not constitute individualized investment advice.</p>
       </div>
     </section>
 
     <section id="privacy" style="max-width: 900px; margin: 0 auto 4rem; padding: 0 1.5rem;">
       <div class="card" style="padding: 2.5rem;">
-        <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fff;">Privacy Policy & Cookie Disclosures</h2>
+        <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fff;">Privacy Policy &amp; Cookie Disclosures</h2>
         <p style="margin-bottom: 1rem;">At YashLab (yashlab.me), your privacy is of paramount importance to us. We do not collect personally identifiable information from visitors unless voluntarily submitted through contact channels.</p>
-        <p style="margin-bottom: 1rem;"><strong>Google AdSense & DoubleClick DART Cookies:</strong> Google, as a third-party vendor, uses cookies to serve ads on our site. Google's use of advertising cookies enables it and its partners to serve ads to our users based on their visit to our site and/or other sites on the Internet.</p>
-        <p>Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener" style="color: #60a5fa;">Google Ad Settings</a> or <a href="https://www.aboutads.info" target="_blank" rel="noopener" style="color: #60a5fa;">AboutAds.info</a>.</p>
+        <p style="margin-bottom: 1rem;"><strong>Google AdSense &amp; DoubleClick DART Cookies:</strong> Google, as a third-party vendor, uses cookies to serve ads on our site based on prior visits to our site or other websites on the Internet.</p>
+        <p>Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener" style="color: #60a5fa;">Google Ad Settings</a>.</p>
       </div>
     </section>
 
     <section id="contact" style="max-width: 900px; margin: 0 auto 4rem; padding: 0 1.5rem;">
       <div class="card" style="padding: 2.5rem; text-align: center;">
-        <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: #fff;">Contact Us</h2>
-        <p style="margin-bottom: 1.5rem;">Have questions, feedback, or business inquiries regarding YashLab?</p>
+        <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: #fff;">Contact Editorial Desk</h2>
+        <p style="margin-bottom: 1.5rem;">Have questions, feedback, or research contributions regarding YashLab?</p>
         <p><strong style="color: #fff;">Email:</strong> <a href="mailto:support@yashlab.me" style="color: #60a5fa; text-decoration: none;">support@yashlab.me</a></p>
       </div>
     </section>
@@ -274,9 +518,11 @@
 
   <footer>
     <div class="footer-container">
-      <div>&copy; 2026 YashLab. All rights reserved.</div>
+      <div>&copy; 2026 YashLab. All rights reserved. Distributed via Anycast Edge CDN.</div>
       <div class="footer-links">
+        <a href="#articles">Articles</a>
         <a href="#about">About</a>
+        <a href="#disclaimer">Disclaimer</a>
         <a href="#privacy">Privacy Policy</a>
         <a href="#contact">Contact</a>
       </div>
