@@ -4,17 +4,17 @@
   
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page Not Found | YashLab</title>
-  <meta name="description" content="The page you are looking for does not exist.">
+  <title>Contact Us | YashLab Editorial Desk</title>
+  <meta name="description" content="Get in touch with YashLab editorial team for research inquiries, corrections, partnership proposals, or content submissions.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://yashlab.me/404">
+  <link rel="canonical" href="https://yashlab.me/contact/">
   <meta name="google-adsense-account" content="ca-pub-9216546431290162">
   <meta name="google-site-verification" content="2dDw_pcs03JLd_24mHbUK73Cdfig4yxet7tYFa9uyHQ" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9216546431290162" crossorigin="anonymous"></script>
-  <meta property="og:title" content="Page Not Found | YashLab">
-  <meta property="og:description" content="The page you are looking for does not exist.">
+  <meta property="og:title" content="Contact Us | YashLab Editorial Desk">
+  <meta property="og:description" content="Get in touch with YashLab editorial team for research inquiries, corrections, partnership proposals, or content submissions.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yashlab.me/404">
+  <meta property="og:url" content="https://yashlab.me/contact/">
   <meta property="og:site_name" content="YashLab">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -186,6 +186,51 @@
     }
 </style>
 
+  <style>
+    .contact-methods {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .contact-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .contact-icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    .contact-title {
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+    .contact-detail {
+      color: #94a3b8;
+      font-size: 0.85rem;
+    }
+    .contact-detail a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+    .faq-item {
+      margin-bottom: 1rem;
+    }
+    .faq-q {
+      font-weight: 700;
+      color: #e2e8f0;
+      font-size: 0.95rem;
+      margin-bottom: 0.35rem;
+    }
+    .faq-a {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+  </style>
 </head>
 <body>
   
@@ -196,19 +241,70 @@
         <a href="/">Home</a>
         <a href="/articles/" >Articles</a>
         <a href="/about/" >About</a>
-        <a href="/contact/" >Contact</a>
+        <a href="/contact/" class="active">Contact</a>
         <a href="/privacy/" >Privacy</a>
       </nav>
     </div>
   </header>
 
-  <main style="text-align:center; padding-top:5rem;">
-    <h1 style="font-size:5rem; margin-bottom:0.5rem; background:linear-gradient(135deg, #3b82f6, #60a5fa); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">404</h1>
-    <h2>Page Not Found</h2>
-    <p style="margin-top:1rem;">The page you're looking for doesn't exist or has been moved.</p>
-    <div style="margin-top:2rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
-      <a href="/" style="background:#3b82f6; color:#fff; padding:0.75rem 1.5rem; border-radius:9999px; text-decoration:none; font-weight:600; font-size:0.9rem;">← Back to Home</a>
-      <a href="/articles/" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:#fff; padding:0.75rem 1.5rem; border-radius:9999px; text-decoration:none; font-weight:600; font-size:0.9rem;">Browse Articles</a>
+  <main>
+    <span class="page-badge">Editorial Desk • Open for Inquiries</span>
+    <h1>Contact YashLab</h1>
+    <p>We welcome inquiries, corrections, feedback, and research collaboration proposals. Our editorial team typically responds within 1-2 business days.</p>
+
+    <div class="contact-methods">
+      <div class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <div class="contact-title">Email</div>
+        <div class="contact-detail">
+          <a href="mailto:support@yashlab.me">support@yashlab.me</a>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">🌐</div>
+        <div class="contact-title">Website</div>
+        <div class="contact-detail">
+          <a href="https://yashlab.me">yashlab.me</a>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">📄</div>
+        <div class="contact-title">Research Submissions</div>
+        <div class="contact-detail">
+          Submit via email with subject line: <em>"Research Submission"</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="content-card" style="margin-top:2rem;">
+      <h2 style="margin-top:0;">When to Contact Us</h2>
+      <ul>
+        <li><strong>Factual Corrections:</strong> If you believe any information in our articles is inaccurate, please let us know with relevant sources.</li>
+        <li><strong>Research Submissions:</strong> We welcome original research contributions from qualified professionals in healthcare, finance, and cloud infrastructure.</li>
+        <li><strong>Partnership Proposals:</strong> For institutional collaborations and guest authorship inquiries.</li>
+        <li><strong>Privacy Requests:</strong> For data access, deletion, or opt-out requests under GDPR or CCPA.</li>
+        <li><strong>General Feedback:</strong> We value reader feedback and suggestions for improving our content.</li>
+      </ul>
+    </div>
+
+    <div class="content-card">
+      <h2 style="margin-top:0;">Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <div class="faq-q">Is YashLab content free to access?</div>
+        <div class="faq-a">Yes, all our research whitepapers and analytical articles are freely accessible. We are supported by advertising through Google AdSense.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">How are articles reviewed?</div>
+        <div class="faq-a">Each article undergoes peer review by credentialed domain experts before publication. We maintain strict editorial standards and zero commercial bias.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Can I contribute an article?</div>
+        <div class="faq-a">Yes! We welcome contributions from qualified professionals. Please email us at support@yashlab.me with your article proposal, credentials, and relevant experience.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">What is your response time?</div>
+        <div class="faq-a">We typically respond to all inquiries within 1-2 business days. Research submissions may take longer for review.</div>
+      </div>
     </div>
   </main>
   
