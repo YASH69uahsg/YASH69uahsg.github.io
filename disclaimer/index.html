@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Disclaimer | YashLab</title>
-  <meta name="description" content="YashLab editorial, financial, and medical disclaimer. Content is for educational and informational purposes only and does not constitute professional advice.">
+  <meta name="description" content="YashLab technical and editorial disclaimer. All engineering notes, code samples, and architecture guides are for educational and informational purposes.">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://yashlab.me/disclaimer/">
+  
   <meta name="google-adsense-account" content="ca-pub-9216546431290162">
   <meta name="google-site-verification" content="2dDw_pcs03JLd_24mHbUK73Cdfig4yxet7tYFa9uyHQ" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9216546431290162" crossorigin="anonymous"></script>
+
   <meta property="og:title" content="Disclaimer | YashLab">
-  <meta property="og:description" content="YashLab editorial, financial, and medical disclaimer. Content is for educational and informational purposes only and does not constitute professional advice.">
+  <meta property="og:description" content="YashLab technical and editorial disclaimer. All content is for educational and informational purposes.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yashlab.me/disclaimer/">
   <meta property="og:site_name" content="YashLab">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #0a0e17;
+      --bg: #090d16;
       --card-bg: rgba(255, 255, 255, 0.03);
       --border: rgba(255, 255, 255, 0.08);
       --primary: #3b82f6;
@@ -41,7 +44,7 @@
     }
     header {
       border-bottom: 1px solid var(--border);
-      background: rgba(10, 14, 23, 0.85);
+      background: rgba(9, 13, 22, 0.85);
       backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
@@ -64,19 +67,12 @@
     }
     .logo span { color: var(--primary); }
     nav { display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap; }
-    nav a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav a:hover { color: #fff; }
-    nav a.active { color: var(--primary); font-weight: 700; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: #fff; }
     main {
       max-width: 900px;
       margin: 0 auto;
-      padding: 3rem 1.5rem;
+      padding: 3.5rem 1.5rem 5rem;
       flex-grow: 1;
       width: 100%;
     }
@@ -89,80 +85,43 @@
       border-radius: 9999px;
       font-size: 0.8rem;
       font-weight: 600;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
     }
     h1 {
       font-family: 'Outfit', sans-serif;
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       font-weight: 800;
-      line-height: 1.3;
-      margin-bottom: 1rem;
       color: #fff;
-    }
-    h2 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-top: 2.5rem;
-      margin-bottom: 0.75rem;
-      color: #fff;
-    }
-    h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-top: 1.5rem;
       margin-bottom: 0.5rem;
-      color: #e2e8f0;
+      line-height: 1.2;
     }
-    p {
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-    }
-    ul, ol {
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-      padding-left: 1.5rem;
-      font-size: 0.95rem;
-    }
-    li { margin-bottom: 0.5rem; }
-    a { color: #60a5fa; }
+    .effective-date { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 2rem; }
     .content-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 1rem;
       padding: 2rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.25rem;
-      margin-top: 1.5rem;
+    .content-card h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      color: #fff;
+      margin-bottom: 1rem;
     }
-    .team-card {
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(59, 130, 246, 0.2);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      text-align: center;
+    .content-card p {
+      color: #cbd5e1;
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
     }
-    .team-avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid rgba(59, 130, 246, 0.4);
-      margin-bottom: 0.75rem;
-    }
-    .team-name { font-weight: 700; color: #fff; font-size: 1rem; }
-    .team-creds { color: #38bdf8; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.25rem; }
-    .team-role { color: #94a3b8; font-size: 0.8rem; margin-bottom: 0.75rem; }
-    .team-bio { color: #cbd5e1; font-size: 0.8rem; text-align: left; line-height: 1.5; }
+    .content-card ul { margin: 1rem 0 1.25rem 1.5rem; color: #cbd5e1; }
+    .content-card li { margin-bottom: 0.5rem; }
+
     footer {
       border-top: 1px solid var(--border);
-      padding: 2.5rem 1.5rem;
-      background: #06090e;
+      padding: 2rem 1.5rem;
+      background: rgba(9, 13, 22, 0.95);
       color: var(--text-muted);
       font-size: 0.85rem;
       margin-top: auto;
@@ -177,91 +136,60 @@
       gap: 1rem;
     }
     .footer-links { display: flex; gap: 1.25rem; flex-wrap: wrap; }
-    .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; }
     .footer-links a:hover { color: #fff; }
-    @media (max-width: 640px) {
-      h1 { font-size: 1.7rem; }
-      nav { gap: 0.75rem; }
-      nav a { font-size: 0.75rem; }
-    }
-</style>
-
+  </style>
 </head>
 <body>
-  
   <header>
     <div class="header-container">
       <a href="/" class="logo">Yash<span>Lab</span></a>
       <nav>
         <a href="/">Home</a>
-        <a href="/articles/" >Articles</a>
-        <a href="/about/" >About</a>
-        <a href="/contact/" >Contact</a>
-        <a href="/privacy/" >Privacy</a>
+        <a href="/articles/">Articles</a>
+        <a href="/about/">About</a>
+        <a href="/contact/">Contact</a>
+        <a href="/privacy/">Privacy</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <span class="page-badge">Legal Document • Last Updated September 2026</span>
-    <h1>Disclaimer</h1>
-    <p><em>Last updated: September 15, 2026</em></p>
+    <span class="page-badge">Legal &bull; Technical Notice</span>
+    <h1>Editorial &amp; Technical Disclaimer</h1>
+    <div class="effective-date">Last Updated: September 2026</div>
 
     <div class="content-card">
-      <h2 style="margin-top:0;">General Disclaimer</h2>
-      <p>The information provided on YashLab (<a href="https://yashlab.me">yashlab.me</a>) is for general educational and informational purposes only. While we strive to provide accurate and up-to-date information, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the information contained on this website.</p>
-      <p>Any reliance you place on such information is strictly at your own risk. In no event will we be liable for any loss or damage including, without limitation, indirect or consequential loss or damage arising from the use of this website.</p>
+      <h2>1. Educational &amp; Informational Purpose</h2>
+      <p>The content published on YashLab (<a href="https://yashlab.me" style="color:#60a5fa; text-decoration:none;">yashlab.me</a>) &mdash; including technical blueprints, architectural guides, benchmark analyses, and configuration examples &mdash; is provided strictly for <strong>educational and informational purposes</strong>.</p>
+      <p>While we strive for technical accuracy and test our solutions rigorously, software engineering environments vary widely. Implementation details that succeed in one architecture may behave differently in other environments due to differences in network latency, cluster configuration, database versions, and resource allocation.</p>
     </div>
 
     <div class="content-card">
-      <h2 style="margin-top:0;">Medical & Healthcare Disclaimer</h2>
-      <p>Content published on YashLab relating to healthcare insurance, critical illness riders, medical underwriting, and health plans is strictly for <strong>educational and informational purposes</strong>. It does not constitute:</p>
+      <h2>2. Code &amp; Configuration Samples ("As-Is")</h2>
+      <p>All source code, shell scripts, Dockerfiles, and configuration files shared on YashLab are provided on an <strong>"AS-IS" and "AS-AVAILABLE" basis</strong>, without warranties of any kind, either express or implied, including but not limited to fitness for a particular purpose or non-infringement.</p>
+      <p>Readers are strongly advised to:</p>
       <ul>
-        <li>Medical advice or diagnosis</li>
-        <li>A recommendation for any specific health insurance product</li>
-        <li>Formal underwriting solicitation or policy offer</li>
-        <li>A substitute for professional medical consultation</li>
+        <li>Review and thoroughly understand code snippets before executing them in any environment.</li>
+        <li>Perform load testing, unit testing, and security auditing in isolated staging environments before deploying to production.</li>
+        <li>Ensure adequate backup and disaster recovery protocols are active prior to executing database migrations or infrastructure changes.</li>
       </ul>
-      <p>Always consult with a qualified healthcare professional or licensed insurance advisor before making any healthcare or insurance decisions.</p>
     </div>
 
     <div class="content-card">
-      <h2 style="margin-top:0;">Financial Disclaimer</h2>
-      <p>Financial analysis, investment strategies, and wealth management content published on YashLab does not constitute:</p>
-      <ul>
-        <li>Individualized investment advice</li>
-        <li>A recommendation to buy, sell, or hold any security</li>
-        <li>Tax or estate planning advice</li>
-        <li>A guarantee of future investment performance</li>
-      </ul>
-      <p>Past performance is not indicative of future results. All investments involve risk, including the potential loss of principal. Always consult a qualified financial advisor, certified financial planner (CFP), or chartered financial analyst (CFA) before making investment decisions.</p>
+      <h2>3. Third-Party Trademarks &amp; References</h2>
+      <p>All product names, logos, brands, and registered trademarks mentioned on YashLab (such as PostgreSQL, Redis, Docker, Kubernetes, Next.js, Cloudflare, Sentry, AWS) belong to their respective owners. Their mention does not imply endorsement, affiliation, or commercial sponsorship.</p>
     </div>
 
     <div class="content-card">
-      <h2 style="margin-top:0;">Technology & Cloud Infrastructure Disclaimer</h2>
-      <p>Technical articles covering cloud computing, distributed systems, DevOps, and infrastructure are for educational reference only. Technology implementations, configurations, and architecture decisions should be validated by qualified engineering professionals within the context of your specific use case, compliance requirements, and organizational policies.</p>
-    </div>
-
-    <div class="content-card">
-      <h2 style="margin-top:0;">External Links Disclaimer</h2>
-      <p>Our website may contain links to external websites that are not provided or maintained by us. We do not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites. The inclusion of any links does not imply endorsement by YashLab.</p>
-    </div>
-
-    <div class="content-card">
-      <h2 style="margin-top:0;">Advertising Disclosure</h2>
-      <p>YashLab displays advertisements through Google AdSense. These advertisements may be targeted based on your browsing history and are served by Google's advertising network. The presence of advertisements does not constitute endorsement of the advertised products or services. Our editorial content is independent of our advertising relationships.</p>
-    </div>
-
-    <div class="content-card">
-      <h2 style="margin-top:0;">Changes to This Disclaimer</h2>
-      <p>We reserve the right to modify this disclaimer at any time. Changes will be posted on this page with an updated revision date.</p>
-      <p>If you have questions about this disclaimer, contact us at <a href="mailto:support@yashlab.me">support@yashlab.me</a>.</p>
+      <h2>4. External Links</h2>
+      <p>YashLab may contain links to external third-party documentation, GitHub repositories, RFC standards, or official developer portals. We do not maintain control over external domains and are not responsible for their content or privacy practices.</p>
     </div>
   </main>
-  
+
   <footer>
     <div class="footer-container">
-      <div>&copy; 2026 YashLab (yashlab.me). All rights reserved.</div>
+      <div>&copy; 2026 YashLab. All rights reserved.</div>
       <div class="footer-links">
         <a href="/">Home</a>
         <a href="/articles/">Articles</a>
@@ -274,5 +202,31 @@
     </div>
   </footer>
 
+  <div id="cookie-consent" style="display:none; position:fixed; bottom:1.5rem; right:1.5rem; max-width:420px; background:rgba(15,23,42,0.95); border:1px solid rgba(59,130,246,0.3); backdrop-filter:blur(12px); border-radius:1rem; padding:1.25rem 1.5rem; z-index:100; box-shadow:0 20px 25px -5px rgba(0,0,0,0.5); font-size:0.85rem; color:#cbd5e1; line-height:1.5;">
+    <div style="font-weight:700; color:#fff; margin-bottom:0.35rem; display:flex; align-items:center; gap:0.5rem;">
+      <span style="font-size:1.1rem;">🍪</span> Cookie &amp; Privacy Notice
+    </div>
+    <p style="margin-bottom:0.85rem;">We use cookies to personalize content and ads via Google AdSense and analyze audience analytics in accordance with our <a href="/privacy/" style="color:#60a5fa; text-decoration:underline;">Privacy Policy</a>.</p>
+    <div style="display:flex; justify-content:flex-end; gap:0.75rem;">
+      <button id="accept-cookies-btn" style="background:#3b82f6; color:#fff; border:none; padding:0.45rem 1.25rem; border-radius:9999px; font-weight:600; font-size:0.8rem; cursor:pointer; transition:background 0.2s;">Accept All</button>
+    </div>
+  </div>
+  <script>
+    (function() {
+      try {
+        if (!localStorage.getItem('yashlab_cookies_accepted')) {
+          var el = document.getElementById('cookie-consent');
+          if (el) el.style.display = 'block';
+          var btn = document.getElementById('accept-cookies-btn');
+          if (btn) {
+            btn.onclick = function() {
+              localStorage.setItem('yashlab_cookies_accepted', 'true');
+              el.style.display = 'none';
+            };
+          }
+        }
+      } catch(e) {}
+    })();
+  </script>
 </body>
 </html>

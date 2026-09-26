@@ -1,3 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /s/
+Disallow: /api/
+Disallow: /admin/
+
 Sitemap: https://yashlab.me/sitemap.xml

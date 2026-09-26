@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>YashLab | Independent Research Papers in Healthcare, Finance &amp; Cloud</title>
-  <meta name="description" content="YashLab publishes rigorous, peer-reviewed analytical research across health insurance underwriting, actuarial science, quantitative wealth strategies, and enterprise distributed cloud infrastructure.">
-  <meta name="keywords" content="health insurance, senior health plans, quantitative finance, cloud computing, kubernetes finops, estate planning">
-  <meta name="author" content="YashLab Editorial Board">
+  <title>YashLab | Systems Architecture, Cloud &amp; Developer Notes</title>
+  <meta name="description" content="Technical deep-dives on distributed systems, cloud infrastructure, database performance, and developer tools authored by Yash.">
+  <meta name="keywords" content="cloud architecture, distributed systems, postgresql, redis, nextjs, kubernetes finops, system design">
+  <meta name="author" content="Yash">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://yashlab.me/">
 
@@ -16,12 +16,28 @@
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9216546431290162" crossorigin="anonymous"></script>
 
   <!-- Open Graph -->
-  <meta property="og:title" content="YashLab | Independent Research Papers in Healthcare, Finance &amp; Cloud">
-  <meta property="og:description" content="Objective, peer-reviewed whitepapers covering healthcare policy, actuarial insurance economics, and distributed systems.">
+  <meta property="og:title" content="YashLab | Systems Architecture, Cloud &amp; Developer Notes">
+  <meta property="og:description" content="Deep-dive engineering notes, system design blueprints, and cloud infrastructure guides by Yash.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yashlab.me/">
   <meta property="og:site_name" content="YashLab">
   <meta property="og:image" content="https://yashlab.me/images/authors/yash.jpg">
+
+  <!-- Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "YashLab",
+    "url": "https://yashlab.me/",
+    "description": "Systems architecture, cloud infrastructure, and software engineering notes by Yash.",
+    "author": {
+      "@type": "Person",
+      "name": "Yash",
+      "url": "https://yashlab.me/about/"
+    }
+  }
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,7 +46,7 @@
 
   <style>
     :root {
-      --bg: #0a0e17;
+      --bg: #090d16;
       --card-bg: rgba(255, 255, 255, 0.03);
       --border: rgba(255, 255, 255, 0.08);
       --primary: #3b82f6;
@@ -48,7 +64,7 @@
     }
     header {
       border-bottom: 1px solid var(--border);
-      background: rgba(10, 14, 23, 0.8);
+      background: rgba(9, 13, 22, 0.85);
       backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
@@ -81,10 +97,10 @@
       font-weight: 500;
       transition: color 0.2s;
     }
-    nav a:hover { color: #fff; }
+    nav a:hover, nav a.active { color: #fff; }
     .hero {
       text-align: center;
-      padding: 4.5rem 1.5rem 2.5rem;
+      padding: 5rem 1.5rem 3rem;
       max-width: 900px;
       margin: 0 auto;
     }
@@ -95,16 +111,16 @@
       border: 1px solid rgba(59, 130, 246, 0.3);
       color: #60a5fa;
       border-radius: 9999px;
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 600;
       margin-bottom: 1.5rem;
     }
     h1 {
       font-family: 'Outfit', sans-serif;
-      font-size: 2.75rem;
+      font-size: 3rem;
       font-weight: 800;
       line-height: 1.2;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
       background: linear-gradient(135deg, #fff 0%, #93c5fd 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -113,33 +129,40 @@
       color: var(--text-muted);
       font-size: 1.15rem;
       max-width: 720px;
-      margin: 0 auto 2rem;
+      margin: 0 auto 2.5rem;
+      line-height: 1.7;
     }
-    .categories-bar {
+    .stats-row {
       display: flex;
       justify-content: center;
+      gap: 2.5rem;
+      margin-bottom: 3.5rem;
       flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-bottom: 3rem;
     }
-    .cat-btn {
-      padding: 0.45rem 1.1rem;
-      border-radius: 9999px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      background: rgba(255, 255, 255, 0.05);
-      color: #cbd5e1;
-      border: 1px solid var(--border);
-      text-decoration: none;
-      transition: all 0.2s;
+    .stat-item { text-align: center; }
+    .stat-val { font-family: 'Outfit', sans-serif; font-size: 1.75rem; font-weight: 700; color: #fff; }
+    .stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+
+    .section-title-wrap {
+      max-width: 1200px;
+      margin: 0 auto 1.5rem;
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
     }
-    .cat-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #fff;
+    }
     .articles-grid {
       max-width: 1200px;
-      margin: 0 auto 4rem;
+      margin: 0 auto 5rem;
       padding: 0 1.5rem;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 1.5rem;
     }
     .card {
@@ -151,12 +174,12 @@
       flex-direction: column;
       justify-content: space-between;
       text-decoration: none;
-      color: inherit;
-      transition: transform 0.2s, border-color 0.2s;
+      transition: all 0.25s ease;
     }
     .card:hover {
-      transform: translateY(-4px);
       border-color: rgba(59, 130, 246, 0.4);
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.05);
     }
     .card-cat {
       font-size: 0.75rem;
@@ -170,174 +193,155 @@
       font-size: 1.2rem;
       font-weight: 700;
       color: #fff;
-      margin-bottom: 0.75rem;
       line-height: 1.4;
+      margin-bottom: 0.75rem;
+      font-family: 'Outfit', sans-serif;
     }
     .card p {
-      color: var(--text-muted);
       font-size: 0.9rem;
+      color: var(--text-muted);
       line-height: 1.6;
       margin-bottom: 1.5rem;
-      flex-grow: 1;
     }
     .card-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.8rem;
-      color: #64748b;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
       padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.8rem;
     }
-    .card-author-snippet {
+    .card-author {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.45rem;
+      color: #93c5fd;
+      font-weight: 600;
     }
-    .card-author-thumb {
+    .card-author-avatar {
       width: 22px;
       height: 22px;
       border-radius: 50%;
-      object-fit: cover;
+      background: #3b82f6;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
     }
-    .read-more { color: var(--primary); font-weight: 600; }
+    .read-time { color: var(--text-muted); }
 
-    /* Editorial Board Styles */
-    .editorial-section {
+    /* About Section */
+    .about-section {
       max-width: 1200px;
       margin: 0 auto 5rem;
       padding: 0 1.5rem;
     }
-    .editorial-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    .editorial-header h2 {
-      font-size: 2.1rem;
-      font-weight: 800;
-      font-family: 'Outfit', sans-serif;
-      color: #fff;
-      margin-bottom: 0.75rem;
-    }
-    .editorial-header p {
-      color: var(--text-muted);
-      max-width: 680px;
-      margin: 0 auto;
-      font-size: 0.95rem;
-    }
-    .board-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 1.5rem;
-    }
-    .board-card {
+    .about-card {
       background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(59, 130, 246, 0.2);
+      border: 1px solid var(--border);
       border-radius: 1.25rem;
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
+      padding: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2.5rem;
       align-items: center;
+    }
+    .about-author-box {
       text-align: center;
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+      border-right: 1px solid var(--border);
+      padding-right: 2.5rem;
     }
-    .board-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(59, 130, 246, 0.5);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-    }
-    .board-avatar-wrap {
-      position: relative;
-      width: 96px;
-      height: 96px;
-      margin-bottom: 1.25rem;
-    }
-    .board-avatar {
+    .author-circle {
       width: 96px;
       height: 96px;
       border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid rgba(59, 130, 246, 0.4);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-    }
-    .board-badge {
-      position: absolute;
-      bottom: 2px;
-      right: 2px;
-      background: #10b981;
-      color: #fff;
-      font-size: 0.7rem;
-      font-weight: 800;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      margin: 0 auto 1.25rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 2px solid #0a0e17;
-    }
-    .board-name {
+      font-size: 2.5rem;
+      font-weight: 800;
       color: #fff;
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 0.25rem;
       font-family: 'Outfit', sans-serif;
+      box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
     }
-    .board-creds {
-      color: #38bdf8;
-      font-size: 0.8rem;
+    .about-name {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+    .about-role {
+      font-size: 0.85rem;
+      color: #60a5fa;
       font-weight: 600;
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
     }
-    .board-role {
-      color: #94a3b8;
-      font-size: 0.82rem;
-      line-height: 1.4;
-      margin-bottom: 0.9rem;
-      min-height: 2.4rem;
-    }
-    .board-bio {
-      color: #cbd5e1;
-      font-size: 0.8rem;
-      line-height: 1.5;
-      margin-bottom: 1.25rem;
-      text-align: left;
-    }
-    .board-meta {
-      width: 100%;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 0.9rem;
-      margin-top: auto;
-      text-align: left;
-      font-size: 0.75rem;
-      color: #94a3b8;
-    }
-    .board-meta div { margin-bottom: 0.35rem; }
-    .board-meta strong { color: #e2e8f0; }
-    .board-tags {
+    .tech-pills {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-top: 0.75rem;
-      justify-content: flex-start;
+      gap: 0.4rem;
+      justify-content: center;
     }
-    .board-tag {
+    .tech-pill {
+      font-size: 0.72rem;
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 0.2rem 0.55rem;
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.5rem;
       border-radius: 9999px;
-      font-size: 0.7rem;
-      color: #93c5fd;
+      color: #cbd5e1;
     }
+    .about-content h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+    .about-content p {
+      color: #cbd5e1;
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+    .about-cta-row {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      padding: 0.6rem 1.4rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .btn-primary:hover { background: #2563eb; }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: #cbd5e1;
+      padding: 0.6rem 1.4rem;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
 
     footer {
       border-top: 1px solid var(--border);
-      padding: 3rem 1.5rem;
-      background: #06090e;
-      color: var(--text-muted);
-      font-size: 0.85rem;
+      background: rgba(9, 13, 22, 0.95);
+      padding: 2.5rem 1.5rem;
+      margin-top: auto;
     }
     .footer-container {
       max-width: 1200px;
@@ -346,11 +350,17 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 1.5rem;
     }
-    .footer-links { display: flex; gap: 1.5rem; }
-    .footer-links a { color: var(--text-muted); text-decoration: none; }
+    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 0.85rem; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: #fff; }
+
+    @media (max-width: 768px) {
+      h1 { font-size: 2.2rem; }
+      .about-card { grid-template-columns: 1fr; padding: 2rem; gap: 2rem; }
+      .about-author-box { border-right: none; border-bottom: 1px solid var(--border); padding-right: 0; padding-bottom: 2rem; }
+    }
   </style>
 </head>
 <body>
@@ -358,556 +368,270 @@
     <div class="header-container">
       <a href="/" class="logo">Yash<span>Lab</span></a>
       <nav>
-        <a href="/articles/">Research Papers (24)</a>
-        <a href="#editorial">Editorial Board</a>
+        <a href="/" class="active">Home</a>
+        <a href="/articles/">Articles</a>
         <a href="/about/">About</a>
-        <a href="/privacy/">Privacy</a>
         <a href="/contact/">Contact</a>
+        <a href="/privacy/">Privacy</a>
       </nav>
     </div>
   </header>
 
   <main>
     <section class="hero">
-      <div class="badge">Peer-Reviewed Research • Established 2026</div>
-      <h1>Empowering Decisions with Deep Industry Analytics</h1>
-      <p class="subtitle">Curated research whitepapers covering healthcare policy economics, wealth governance trusts, and distributed edge cloud infrastructure authored by verified domain leaders.</p>
+      <div class="badge">Systems Architecture &bull; Cloud Infrastructure &bull; Developer Notes</div>
+      <h1>Building Resilient, Scalable Cloud Systems.</h1>
+      <p class="subtitle">Practical architectural blueprints, production postmortems, and engineering guides on distributed systems, database scaling, and web performance by Yash.</p>
       
-      <div class="categories-bar">
-        <span class="cat-btn">Health &amp; Insurance (8)</span>
-        <span class="cat-btn">Finance &amp; Wealth (7)</span>
-        <span class="cat-btn">Cloud &amp; DevOps (9)</span>
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="stat-val">12</div>
+          <div class="stat-label">Architecture Deep Dives</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">100%</div>
+          <div class="stat-label">Code-First &amp; Benchmark-Driven</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">Free</div>
+          <div class="stat-label">Open Engineering Knowledge</div>
+        </div>
       </div>
     </section>
 
-    <!-- Articles Grid -->
-    <section id="articles" class="articles-grid">
+    <div class="section-title-wrap">
+      <h2 class="section-title">Latest Technical Papers</h2>
+      <a href="/articles/" style="color:#60a5fa; text-decoration:none; font-size:0.9rem; font-weight:600;">View All Articles &rarr;</a>
+    </div>
+
+    <section class="articles-grid">
       
-        <a href="/articles/senior-health-insurance-plans-2026.html" class="card">
+        <a href="/articles/distributed-api-gateway-rate-limiting-architecture.html" class="card">
           <div>
-            <div class="card-cat">Health & Insurance</div>
-            <h2>Senior Citizen Health Insurance Plans in 2026: Comprehensive Coverage, Copay & Clauses</h2>
-            <p>A complete guide to evaluating healthcare policies, critical illness riders, zero-copay waivers, and pre-existing disease protocols for individuals aged 60 and above.</p>
+            <div class="card-cat">Distributed Systems</div>
+            <h2>Distributed API Gateway Architecture: Rate Limiting & High-Throughput Ingress</h2>
+            <p>Designing resilient API gateways using Redis sliding window algorithms, token bucket throttling, and circuit breakers for mission-critical microservices.</p>
           </div>
           <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/alistair-vance.jpg" alt="Dr. Alistair Vance" class="card-author-thumb" />
-              <span>Dr. Alistair Vance</span>
+            <div class="card-author">
+              <div class="card-author-avatar">Y</div>
+              <span>Yash</span>
             </div>
-            <span class="read-more">Read Paper →</span>
+            <span class="read-time">12 min read &rarr;</span>
           </div>
         </a>
       
-        <a href="/articles/zero-copay-vs-deductibles-health-insurance.html" class="card">
+        <a href="/articles/serverless-postgres-connection-pooling-pgbouncer-hyperdrive.html" class="card">
           <div>
-            <div class="card-cat">Health & Insurance</div>
-            <h2>Zero Copay vs. Deductibles in Health Insurance: Cost-Benefit Analysis for 2026</h2>
-            <p>A mathematical deep dive into how copay percentages, aggregate deductibles, and out-of-pocket maximums impact your long-term healthcare expenditure.</p>
+            <div class="card-cat">Databases & Storage</div>
+            <h2>Serverless PostgreSQL Connection Pooling: PgBouncer, Hyperdrive & Neon at Scale</h2>
+            <p>Architecting resilient connection pooling for ephemeral serverless functions, comparing PgBouncer transaction pooling with Cloudflare Hyperdrive and Supabase Supavisor.</p>
           </div>
           <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/elena-rostova.jpg" alt="Elena Rostova" class="card-author-thumb" />
-              <span>Elena Rostova</span>
+            <div class="card-author">
+              <div class="card-author-avatar">Y</div>
+              <span>Yash</span>
             </div>
-            <span class="read-more">Read Paper →</span>
+            <span class="read-time">14 min read &rarr;</span>
           </div>
         </a>
       
-        <a href="/articles/critical-illness-riders-vs-standalone.html" class="card">
+        <a href="/articles/nextjs-app-router-caching-performance-optimization.html" class="card">
           <div>
-            <div class="card-cat">Health & Insurance</div>
-            <h2>Critical Illness Riders vs. Standalone Policies: When and How to Upgrade</h2>
-            <p>Evaluating lump-sum benefit policies against indemnity riders for cancer, stroke, myocardial infarction, and end-stage organ failure.</p>
+            <div class="card-cat">Web Architecture</div>
+            <h2>Next.js App Router Caching: Deep Dive into Request Memoization, Data Cache & PPR</h2>
+            <p>Understanding the four-tier caching system of Next.js App Router to avoid stale data bugs, optimize TTFB, and architect lightning-fast edge applications.</p>
           </div>
           <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/alistair-vance.jpg" alt="Dr. Alistair Vance" class="card-author-thumb" />
-              <span>Dr. Alistair Vance</span>
+            <div class="card-author">
+              <div class="card-author-avatar">Y</div>
+              <span>Yash</span>
             </div>
-            <span class="read-more">Read Paper →</span>
+            <span class="read-time">12 min read &rarr;</span>
           </div>
         </a>
       
-        <a href="/articles/pre-existing-disease-waiting-periods-guide.html" class="card">
+        <a href="/articles/postgresql-indexing-query-optimization-deep-dive.html" class="card">
           <div>
-            <div class="card-cat">Health & Insurance</div>
-            <h2>Pre-Existing Disease (PED) Waiting Periods: The 2026 Regulatory Blueprint</h2>
-            <p>A deep examination of underwriting disclosures, continuous coverage portability, and legal guidelines governing pre-existing condition claims.</p>
+            <div class="card-cat">Databases & Storage</div>
+            <h2>PostgreSQL Indexing & Query Optimization: B-Tree, GIN, BRIN and EXPLAIN Plans</h2>
+            <p>Master PostgreSQL query performance: B-Tree internal anatomy, GIN vs GiST for JSONB, BRIN for time-series data, and tuning autovacuum for table bloat.</p>
           </div>
           <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/elena-rostova.jpg" alt="Elena Rostova" class="card-author-thumb" />
-              <span>Elena Rostova</span>
+            <div class="card-author">
+              <div class="card-author-avatar">Y</div>
+              <span>Yash</span>
             </div>
-            <span class="read-more">Read Paper →</span>
+            <span class="read-time">15 min read &rarr;</span>
           </div>
         </a>
       
-        <a href="/articles/group-vs-individual-health-insurance-gap.html" class="card">
+        <a href="/articles/redis-distributed-locking-caching-patterns.html" class="card">
           <div>
-            <div class="card-cat">Health & Insurance</div>
-            <h2>Corporate Group vs. Individual Health Insurance: Bridging the Post-Employment Gap</h2>
-            <p>Why relying exclusively on employer-provided health coverage leaves families financially vulnerable, and how to execute a cost-effective migration.</p>
+            <div class="card-cat">Distributed Systems</div>
+            <h2>Distributed Locking & High-Concurrency Caching Patterns with Redis and Lua Scripts</h2>
+            <p>Implementing distributed mutual exclusion using the Redlock algorithm, preventing cache stampedes with probabilistic early expiration, and atomic Lua scripting.</p>
           </div>
           <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/elena-rostova.jpg" alt="Elena Rostova" class="card-author-thumb" />
-              <span>Elena Rostova</span>
+            <div class="card-author">
+              <div class="card-author-avatar">Y</div>
+              <span>Yash</span>
             </div>
-            <span class="read-more">Read Paper →</span>
-          </div>
-        </a>
-      
-        <a href="/articles/cashless-hospital-claims-settlement-guide.html" class="card">
-          <div>
-            <div class="card-cat">Health & Insurance</div>
-            <h2>Mastering the Cashless Hospitalization Claims Workflow: Step-by-Step Settlement</h2>
-            <p>How to avoid pre-authorization rejections, eliminate non-medical deductions, and expedite third-party administrator (TPA) clearances.</p>
-          </div>
-          <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/alistair-vance.jpg" alt="Dr. Alistair Vance" class="card-author-thumb" />
-              <span>Dr. Alistair Vance</span>
-            </div>
-            <span class="read-more">Read Paper →</span>
-          </div>
-        </a>
-      
-        <a href="/articles/top-estate-planning-life-insurance.html" class="card">
-          <div>
-            <div class="card-cat">Finance & Wealth</div>
-            <h2>Estate Planning and Life Insurance Trusts: Securing Multi-Generational Wealth Transfer</h2>
-            <p>Strategic estate structuring utilizing irrevocable life insurance trusts (ILIT) to minimize estate tax liabilities and preserve liquidity for legal heirs.</p>
-          </div>
-          <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/elena-rostova.jpg" alt="Elena Rostova" class="card-author-thumb" />
-              <span>Elena Rostova</span>
-            </div>
-            <span class="read-more">Read Paper →</span>
-          </div>
-        </a>
-      
-        <a href="/articles/high-yield-dividend-growth-investing-2026.html" class="card">
-          <div>
-            <div class="card-cat">Finance & Wealth</div>
-            <h2>High-Yield Dividend Growth vs. Capital Appreciation: Portfolio Resilience in 2026</h2>
-            <p>Balancing cash-flow generation against equity compounding through Dividend Aristocrats, free cash flow payout ratios, and dividend reinvestment (DRIP).</p>
-          </div>
-          <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/rajiv-singhania.jpg" alt="Rajiv Singhania" class="card-author-thumb" />
-              <span>Rajiv Singhania</span>
-            </div>
-            <span class="read-more">Read Paper →</span>
-          </div>
-        </a>
-      
-        <a href="/articles/forex-risk-management-strategies.html" class="card">
-          <div>
-            <div class="card-cat">Finance & Wealth</div>
-            <h2>Institutional Forex Risk Management: Hedging Volatility in Emerging Corridors</h2>
-            <p>Frameworks for cross-border treasury desks to mitigate foreign exchange volatility via forward contracts, zero-cost currency collars, and synthetic swaps.</p>
-          </div>
-          <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/rajiv-singhania.jpg" alt="Rajiv Singhania" class="card-author-thumb" />
-              <span>Rajiv Singhania</span>
-            </div>
-            <span class="read-more">Read Paper →</span>
-          </div>
-        </a>
-      
-        <a href="/articles/tax-loss-harvesting-strategies-guide.html" class="card">
-          <div>
-            <div class="card-cat">Finance & Wealth</div>
-            <h2>Tax-Loss Harvesting Strategies: Offsetting Capital Gains Legally and Strategically</h2>
-            <p>A quantitative guide to identifying unrealized equity losses, navigating wash-sale restrictions, and boosting after-tax investment yields.</p>
-          </div>
-          <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/elena-rostova.jpg" alt="Elena Rostova" class="card-author-thumb" />
-              <span>Elena Rostova</span>
-            </div>
-            <span class="read-more">Read Paper →</span>
-          </div>
-        </a>
-      
-        <a href="/articles/commercial-reits-investment-yield-analysis.html" class="card">
-          <div>
-            <div class="card-cat">Finance & Wealth</div>
-            <h2>Commercial REITs vs. Physical Real Estate: Yield, Liquidity, and Risk Comparison</h2>
-            <p>Comparing Real Estate Investment Trusts against direct residential property acquisitions across rental yields, vacancy risk, and capital requirements.</p>
-          </div>
-          <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/rajiv-singhania.jpg" alt="Rajiv Singhania" class="card-author-thumb" />
-              <span>Rajiv Singhania</span>
-            </div>
-            <span class="read-more">Read Paper →</span>
-          </div>
-        </a>
-      
-        <a href="/articles/edge-cloud-cdn-architecture.html" class="card">
-          <div>
-            <div class="card-cat">Cloud & DevOps</div>
-            <h2>Next-Gen Edge Cloud & Low-Latency CDN Architecture for Enterprise Workloads</h2>
-            <p>Optimizing globally distributed computing with Anycast routing, automated edge cache invalidation, and serverless WASM runtimes.</p>
-          </div>
-          <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/marcus-chen.jpg" alt="Marcus Chen" class="card-author-thumb" />
-              <span>Marcus Chen</span>
-            </div>
-            <span class="read-more">Read Paper →</span>
+            <span class="read-time">14 min read &rarr;</span>
           </div>
         </a>
       
         <a href="/articles/zero-trust-network-access-ztna-architecture.html" class="card">
           <div>
-            <div class="card-cat">Cloud & DevOps</div>
-            <h2>Zero-Trust Network Access (ZTNA) vs. Legacy Corporate VPNs: Enterprise Security Guide</h2>
-            <p>Replacing brittle perimeter VPN models with identity-aware micro-segmentation, continuous posture verification, and ephemeral mutual TLS.</p>
+            <div class="card-cat">Security & Networking</div>
+            <h2>Zero-Trust Network Access (ZTNA) Architecture: Beyond Perimeter Security</h2>
+            <p>Transitioning from legacy corporate VPNs to identity-aware proxies, mutual TLS (mTLS), and continuous context-based authorization across distributed teams.</p>
           </div>
           <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/marcus-chen.jpg" alt="Marcus Chen" class="card-author-thumb" />
-              <span>Marcus Chen</span>
+            <div class="card-author">
+              <div class="card-author-avatar">Y</div>
+              <span>Yash</span>
             </div>
-            <span class="read-more">Read Paper →</span>
-          </div>
-        </a>
-      
-        <a href="/articles/kubernetes-finops-cloud-cost-governance.html" class="card">
-          <div>
-            <div class="card-cat">Cloud & DevOps</div>
-            <h2>FinOps for Enterprise Kubernetes: Eliminating Cloud Compute Wastage in 2026</h2>
-            <p>Right-sizing container resource allocations, spot instance orchestration, and horizontal pod autoscaling architectures to slash AWS and GCP billing.</p>
-          </div>
-          <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/marcus-chen.jpg" alt="Marcus Chen" class="card-author-thumb" />
-              <span>Marcus Chen</span>
-            </div>
-            <span class="read-more">Read Paper →</span>
-          </div>
-        </a>
-      
-        <a href="/articles/distributed-api-gateway-rate-limiting-architecture.html" class="card">
-          <div>
-            <div class="card-cat">Cloud & DevOps</div>
-            <h2>Distributed API Gateway Architecture: Rate Limiting and High-Throughput Ingress</h2>
-            <p>Designing resilient API gateways using Redis sliding window algorithms, token bucket throttling, and circuit breakers for mission-critical microservices.</p>
-          </div>
-          <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/marcus-chen.jpg" alt="Marcus Chen" class="card-author-thumb" />
-              <span>Marcus Chen</span>
-            </div>
-            <span class="read-more">Read Paper →</span>
-          </div>
-        </a>
-      
-        <a href="/articles/enterprise-disaster-recovery-multi-region-replication.html" class="card">
-          <div>
-            <div class="card-cat">Cloud & DevOps</div>
-            <h2>Enterprise Disaster Recovery: Multi-Region Database Replication & Active-Active Topologies</h2>
-            <p>Achieving sub-minute Recovery Time Objective (RTO) and near-zero Recovery Point Objective (RPO) through consensus protocols and geodistributed data layers.</p>
-          </div>
-          <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/marcus-chen.jpg" alt="Marcus Chen" class="card-author-thumb" />
-              <span>Marcus Chen</span>
-            </div>
-            <span class="read-more">Read Paper →</span>
-          </div>
-        </a>
-      
-        <a href="/articles/dental-and-vision-insurance-supplemental-coverage.html" class="card">
-          <div>
-            <div class="card-cat">Health & Insurance</div>
-            <h2>Dental and Vision Supplemental Insurance: Evaluating Out-of-Pocket Economics</h2>
-            <p>Why standard health policies exclude routine dental and optical care, and how standalone dental-vision riders hedge predictable outpatient costs.</p>
-          </div>
-          <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/alistair-vance.jpg" alt="Dr. Alistair Vance" class="card-author-thumb" />
-              <span>Dr. Alistair Vance</span>
-            </div>
-            <span class="read-more">Read Paper →</span>
-          </div>
-        </a>
-      
-        <a href="/articles/top-opd-health-insurance-plans-india.html" class="card">
-          <div>
-            <div class="card-cat">Health & Insurance</div>
-            <h2>OPD Health Insurance Coverage: Evaluating Pharmacy Sub-Limits and Doctor Consultation Riders</h2>
-            <p>A complete operational guide to outpatient department (OPD) coverage, cashless pharmacy debit cards, and wellness reward ecosystems.</p>
-          </div>
-          <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/alistair-vance.jpg" alt="Dr. Alistair Vance" class="card-author-thumb" />
-              <span>Dr. Alistair Vance</span>
-            </div>
-            <span class="read-more">Read Paper →</span>
-          </div>
-        </a>
-      
-        <a href="/articles/retirement-corpus-safe-withdrawal-rates.html" class="card">
-          <div>
-            <div class="card-cat">Finance & Wealth</div>
-            <h2>Retirement Corpus Structuring: The 4% Rule vs. Dynamic Guardrails in 2026</h2>
-            <p>Stress-testing the classic Bengen 4% safe withdrawal rate against contemporary longevity risks, sequence-of-returns hazards, and bond market real yields.</p>
-          </div>
-          <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/elena-rostova.jpg" alt="Elena Rostova" class="card-author-thumb" />
-              <span>Elena Rostova</span>
-            </div>
-            <span class="read-more">Read Paper →</span>
-          </div>
-        </a>
-      
-        <a href="/articles/term-insurance-riders-worth-buying.html" class="card">
-          <div>
-            <div class="card-cat">Finance & Wealth</div>
-            <h2>Term Insurance Riders: Evaluating Accidental Disability, Premium Waivers, and Terminal Illness</h2>
-            <p>Unpacking which life insurance riders deliver genuine actuarial value versus those that unnecessarily inflate your annual premium commitments.</p>
-          </div>
-          <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/rajiv-singhania.jpg" alt="Rajiv Singhania" class="card-author-thumb" />
-              <span>Rajiv Singhania</span>
-            </div>
-            <span class="read-more">Read Paper →</span>
-          </div>
-        </a>
-      
-        <a href="/articles/zero-downtime-database-migrations-enterprise.html" class="card">
-          <div>
-            <div class="card-cat">Cloud & DevOps</div>
-            <h2>Zero-Downtime Database Migrations: The Expand-and-Contract Architecture with CDC</h2>
-            <p>A technical walkthrough of executing schema alterations, table re-indexing, and major database engine upgrades in high-throughput production environments.</p>
-          </div>
-          <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/marcus-chen.jpg" alt="Marcus Chen" class="card-author-thumb" />
-              <span>Marcus Chen</span>
-            </div>
-            <span class="read-more">Read Paper →</span>
+            <span class="read-time">13 min read &rarr;</span>
           </div>
         </a>
       
         <a href="/articles/production-error-monitoring-sentry-distributed-tracing.html" class="card">
           <div>
             <div class="card-cat">Cloud & DevOps</div>
-            <h2>Production Observability with Sentry: Distributed Tracing, Error Monitoring & Session Replay in Modern Web Apps</h2>
-            <p>A deep-dive technical blueprint for implementing real-time exception tracking, distributed transaction tracing, and privacy-first session replays across Next.js and microservice architectures.</p>
+            <h2>Production Observability with Sentry: Distributed Tracing & Error Monitoring</h2>
+            <p>A deep-dive technical blueprint for implementing real-time exception tracking, distributed transaction tracing, and privacy-first session replays across Next.js apps.</p>
           </div>
           <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/marcus-chen.jpg" alt="Marcus Chen" class="card-author-thumb" />
-              <span>Marcus Chen</span>
+            <div class="card-author">
+              <div class="card-author-avatar">Y</div>
+              <span>Yash</span>
             </div>
-            <span class="read-more">Read Paper →</span>
+            <span class="read-time">13 min read &rarr;</span>
+          </div>
+        </a>
+      
+        <a href="/articles/kubernetes-finops-cloud-cost-governance.html" class="card">
+          <div>
+            <div class="card-cat">Cloud & DevOps</div>
+            <h2>Kubernetes FinOps & Cloud Cost Governance: Resource Optimization at Scale</h2>
+            <p>Implementing automated horizontal and vertical pod autoscaling, spot instance orchestration, and namespace-level chargebacks to cut cloud spend by 40%.</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-author">
+              <div class="card-author-avatar">Y</div>
+              <span>Yash</span>
+            </div>
+            <span class="read-time">11 min read &rarr;</span>
+          </div>
+        </a>
+      
+        <a href="/articles/edge-cloud-cdn-architecture.html" class="card">
+          <div>
+            <div class="card-cat">Security & Networking</div>
+            <h2>Edge Cloud & Modern CDN Architecture: Global Routing, Caching & Workers</h2>
+            <p>Optimizing global content delivery networks, Anycast routing, stale-while-revalidate caching semantics, and running serverless compute on edge points of presence.</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-author">
+              <div class="card-author-avatar">Y</div>
+              <span>Yash</span>
+            </div>
+            <span class="read-time">11 min read &rarr;</span>
+          </div>
+        </a>
+      
+        <a href="/articles/zero-downtime-database-migrations-enterprise.html" class="card">
+          <div>
+            <div class="card-cat">Databases & Storage</div>
+            <h2>Zero-Downtime Database Migrations in High-Availability Distributed Systems</h2>
+            <p>Executing non-blocking schema migrations on live relational databases using expand-contract patterns, dual-writing, and shadow table backfilling.</p>
+          </div>
+          <div class="card-footer">
+            <div class="card-author">
+              <div class="card-author-avatar">Y</div>
+              <span>Yash</span>
+            </div>
+            <span class="read-time">12 min read &rarr;</span>
           </div>
         </a>
       
         <a href="/articles/enterprise-genai-security-dlp-prompt-injection.html" class="card">
           <div>
-            <div class="card-cat">Cloud & DevOps</div>
-            <h2>Enterprise Generative AI Security: DLP, Prompt Injection Defense & Data Privacy Guardrails</h2>
-            <p>A comprehensive blueprint for securing enterprise LLM pipelines against prompt injection, model jailbreaking, training data exfiltration, and sensitive data leakage with automated DLP guardrails.</p>
+            <div class="card-cat">Security & Networking</div>
+            <h2>Enterprise Generative AI Security: DLP, Prompt Injection Defense & Privacy Guardrails</h2>
+            <p>A comprehensive blueprint for securing enterprise LLM pipelines against prompt injection, model jailbreaking, training data exfiltration, and sensitive data leakage.</p>
           </div>
           <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/marcus-chen.jpg" alt="Marcus Chen" class="card-author-thumb" />
-              <span>Marcus Chen</span>
+            <div class="card-author">
+              <div class="card-author-avatar">Y</div>
+              <span>Yash</span>
             </div>
-            <span class="read-more">Read Paper →</span>
+            <span class="read-time">16 min read &rarr;</span>
           </div>
         </a>
       
-        <a href="/articles/serverless-postgres-connection-pooling-pgbouncer-hyperdrive.html" class="card">
+        <a href="/articles/enterprise-disaster-recovery-multi-region-replication.html" class="card">
           <div>
-            <div class="card-cat">Cloud & DevOps</div>
-            <h2>Serverless PostgreSQL Connection Pooling: PgBouncer, Cloudflare Hyperdrive & Neon at Scale</h2>
-            <p>Architecting resilient connection pooling for ephemeral serverless functions, comparing PgBouncer transaction pooling with Cloudflare Hyperdrive, Supabase Supavisor, and Neon serverless driver architectures.</p>
+            <div class="card-cat">Distributed Systems</div>
+            <h2>Enterprise Disaster Recovery: Active-Active Multi-Region Replication & Failover</h2>
+            <p>Designing resilient disaster recovery topologies with sub-minute RTO and RPO across distributed cloud providers and geolocated availability zones.</p>
           </div>
           <div class="card-footer">
-            <div class="card-author-snippet">
-              <img src="/images/authors/marcus-chen.jpg" alt="Marcus Chen" class="card-author-thumb" />
-              <span>Marcus Chen</span>
+            <div class="card-author">
+              <div class="card-author-avatar">Y</div>
+              <span>Yash</span>
             </div>
-            <span class="read-more">Read Paper →</span>
+            <span class="read-time">13 min read &rarr;</span>
           </div>
         </a>
       
     </section>
 
-    <!-- Editorial Board & Authors (E-E-A-T Certified) -->
-    <section id="editorial" class="editorial-section">
-      <div class="editorial-header">
-        <div class="badge" style="display: inline-block; margin-bottom: 0.75rem;">Verified Contributors • E-E-A-T Certified</div>
-        <h2>Editorial Board &amp; Senior Research Fellows</h2>
-        <p>All YashLab whitepapers are authored and reviewed by credentialed medical underwriters, chartered analysts, and principal infrastructure engineers adhering to strict peer-review and fact-checking protocols.</p>
-      </div>
-
-      <div class="board-grid">
-        
-          <div class="board-card">
-            <div class="board-avatar-wrap">
-              <img src="/images/authors/alistair-vance.jpg" alt="Dr. Alistair Vance" class="board-avatar" width="96" height="96" loading="lazy" />
-              <div class="board-badge" title="Verified Credentialed Contributor">✓</div>
-            </div>
-            <h3 class="board-name">Dr. Alistair Vance</h3>
-            <div class="board-creds">M.D., Ph.D. (Health Economics), FHEA</div>
-            <div class="board-role">Senior Healthcare Economics Analyst & Former Underwriting Director</div>
-            <p class="board-bio">Dr. Alistair Vance brings over 18 years of clinical and actuarial experience in private medical insurance, critical illness risk stratification, and healthcare micro...</p>
-            
-            <div class="board-meta">
-              <div><strong>💼 Experience:</strong> 18+ Years Healthcare Economics & Actuarial Underwriting</div>
-              <div><strong>🎓 Education:</strong> Ph.D. Health Economics (Johns Hopkins), M.D. (Univ of Edinburgh)</div>
-            </div>
-
-            <div class="board-tags">
-              <span class="board-tag">Senior Healthcare Policies</span><span class="board-tag">Underwriting Protocols</span><span class="board-tag">Pre-Existing Moratoriums</span>
-            </div>
+    <section class="about-section">
+      <div class="about-card">
+        <div class="about-author-box">
+          <div class="author-circle">Y</div>
+          <div class="about-name">Yash</div>
+          <div class="about-role">Software Engineer &amp; Founder</div>
+          <div class="tech-pills">
+            <span class="tech-pill">Next.js</span>
+            <span class="tech-pill">TypeScript</span>
+            <span class="tech-pill">Node.js</span>
+            <span class="tech-pill">PostgreSQL</span>
+            <span class="tech-pill">Redis</span>
+            <span class="tech-pill">Docker</span>
+            <span class="tech-pill">Cloudflare</span>
           </div>
-        
-          <div class="board-card">
-            <div class="board-avatar-wrap">
-              <img src="/images/authors/elena-rostova.jpg" alt="Elena Rostova" class="board-avatar" width="96" height="96" loading="lazy" />
-              <div class="board-badge" title="Verified Credentialed Contributor">✓</div>
-            </div>
-            <h3 class="board-name">Elena Rostova</h3>
-            <div class="board-creds">CFP®, FSA (Fellow of the Society of Actuaries)</div>
-            <div class="board-role">Lead Actuarial Risk Consultant & Senior Policy Strategist</div>
-            <p class="board-bio">Elena Rostova is a Certified Financial Planner and Fellow of the Society of Actuaries specializing in policyholder risk modeling, family floater underwriting, and ou...</p>
-            
-            <div class="board-meta">
-              <div><strong>💼 Experience:</strong> 14+ Years Actuarial Science & Health Policy Strategy</div>
-              <div><strong>🎓 Education:</strong> M.Sc. Actuarial Science (LSE), B.Sc. Applied Mathematics</div>
-            </div>
-
-            <div class="board-tags">
-              <span class="board-tag">Cashless Hospital Networks</span><span class="board-tag">OPD Coverage Analysis</span><span class="board-tag">Dental & Vision Underwriting</span>
-            </div>
+        </div>
+        <div class="about-content">
+          <h2>About YashLab</h2>
+          <p>YashLab (<a href="https://yashlab.me" style="color:#60a5fa; text-decoration:none;">yashlab.me</a>) is an independent engineering laboratory and tech publication founded by Yash. It serves as a living notebook for exploring distributed systems design, database connection pooling, high-throughput caching, and cloud cost optimization.</p>
+          <p>Every paper and guide is code-first, rooted in real production debugging, and backed by measurable benchmarks. No marketing hype, no corporate fluff &mdash; just honest engineering notes for builders.</p>
+          <div class="about-cta-row">
+            <a href="/about/" class="btn-primary">Read Full Story</a>
+            <a href="/contact/" class="btn-secondary">Get in Touch</a>
           </div>
-        
-          <div class="board-card">
-            <div class="board-avatar-wrap">
-              <img src="/images/authors/rajiv-singhania.jpg" alt="Rajiv Singhania" class="board-avatar" width="96" height="96" loading="lazy" />
-              <div class="board-badge" title="Verified Credentialed Contributor">✓</div>
-            </div>
-            <h3 class="board-name">Rajiv Singhania</h3>
-            <div class="board-creds">CFA®, FRM®, CAIA</div>
-            <div class="board-role">Chartered Financial Analyst & Macroeconomic Research Lead</div>
-            <p class="board-bio">Rajiv Singhania is a Chartered Financial Analyst and Financial Risk Manager leading macroeconomic research and alternative asset valuation at YashLab. With 16 years ...</p>
-            
-            <div class="board-meta">
-              <div><strong>💼 Experience:</strong> 16+ Years Quantitative Asset Management & Macro Research</div>
-              <div><strong>🎓 Education:</strong> MBA Finance (Wharton), B.Tech (IIT Delhi), CFA Charterholder</div>
-            </div>
-
-            <div class="board-tags">
-              <span class="board-tag">REIT Yield Economics</span><span class="board-tag">Retirement Withdrawal Modeling</span><span class="board-tag">Dividend Growth Equity</span>
-            </div>
-          </div>
-        
-          <div class="board-card">
-            <div class="board-avatar-wrap">
-              <img src="/images/authors/marcus-chen.jpg" alt="Marcus Chen" class="board-avatar" width="96" height="96" loading="lazy" />
-              <div class="board-badge" title="Verified Credentialed Contributor">✓</div>
-            </div>
-            <h3 class="board-name">Marcus Chen</h3>
-            <div class="board-creds">M.S. Distributed Systems, AWS Certified Fellow</div>
-            <div class="board-role">Principal Distributed Systems Architect & FinOps Advisor</div>
-            <p class="board-bio">Marcus Chen is a Principal Systems Architect with over 15 years designing petabyte-scale distributed data pipelines, zero-trust cloud network topographies, and FinOp...</p>
-            
-            <div class="board-meta">
-              <div><strong>💼 Experience:</strong> 15+ Years Enterprise Cloud Architecture & FinOps</div>
-              <div><strong>🎓 Education:</strong> M.S. Distributed Computing (Stanford University)</div>
-            </div>
-
-            <div class="board-tags">
-              <span class="board-tag">Kubernetes FinOps</span><span class="board-tag">Zero-Trust Architecture</span><span class="board-tag">Database Sharding & Replication</span>
-            </div>
-          </div>
-        
-          <div class="board-card">
-            <div class="board-avatar-wrap">
-              <img src="/images/authors/yash.jpg" alt="Yash" class="board-avatar" width="96" height="96" loading="lazy" />
-              <div class="board-badge" title="Verified Credentialed Contributor">✓</div>
-            </div>
-            <h3 class="board-name">Yash</h3>
-            <div class="board-creds">B.Tech, Tech Entrepreneur & Research Publisher</div>
-            <div class="board-role">Founder & Managing Editor, YashLab</div>
-            <p class="board-bio">Yash is the founder and Managing Editor of YashLab, directing digital publication infrastructure, editorial integrity guidelines, and open analytical research. Under...</p>
-            
-            <div class="board-meta">
-              <div><strong>💼 Experience:</strong> Founder & Managing Director, YashLab Publications</div>
-              <div><strong>🎓 Education:</strong> B.Tech in Computer Science & Engineering</div>
-            </div>
-
-            <div class="board-tags">
-              <span class="board-tag">Editorial Governance</span><span class="board-tag">Digital Media Architecture</span><span class="board-tag">Tech Strategy</span>
-            </div>
-          </div>
-        
-      </div>
-    </section>
-
-    <section id="about" style="max-width: 900px; margin: 0 auto 4rem; padding: 0 1.5rem;">
-      <div class="card" style="padding: 2.5rem;">
-        <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fff;">About YashLab</h2>
-        <p style="margin-bottom: 1rem;">YashLab (yashlab.me) is an independent digital publication dedicated to offering high-quality educational research, technology deep-dives, and financial planning frameworks. Founded by Yash, our mission is to demystify complex technical, actuarial, and economic concepts into clear, actionable knowledge.</p>
-        <p>All content is original, rigorously reviewed by credentialed contributors, and published for researchers, policyholders, and digital engineers worldwide.</p>
-      </div>
-    </section>
-
-    <section id="disclaimer" style="max-width: 900px; margin: 0 auto 4rem; padding: 0 1.5rem;">
-      <div class="card" style="padding: 2.5rem;">
-        <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fff;">Editorial &amp; Regulatory Disclaimer</h2>
-        <p style="margin-bottom: 1rem;">Content published on YashLab is strictly for general educational and informational purposes. Discussions of healthcare insurance, critical illness riders, and medical plans do not constitute medical advice or formal underwriting solicitation. Financial analysis of equities, REITs, and foreign exchange does not constitute individualized investment advice.</p>
-      </div>
-    </section>
-
-    <section id="privacy" style="max-width: 900px; margin: 0 auto 4rem; padding: 0 1.5rem;">
-      <div class="card" style="padding: 2.5rem;">
-        <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: #fff;">Privacy Policy &amp; Cookie Disclosures</h2>
-        <p style="margin-bottom: 1rem;">At YashLab (yashlab.me), your privacy is of paramount importance to us. We do not collect personally identifiable information from visitors unless voluntarily submitted through contact channels.</p>
-        <p style="margin-bottom: 1rem;"><strong>Google AdSense &amp; DoubleClick DART Cookies:</strong> Google, as a third-party vendor, uses cookies to serve ads on our site based on prior visits to our site or other websites on the Internet.</p>
-        <p>Users may opt out of personalized advertising by visiting <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener" style="color: #60a5fa;">Google Ad Settings</a>.</p>
-      </div>
-    </section>
-
-    <section id="contact" style="max-width: 900px; margin: 0 auto 4rem; padding: 0 1.5rem;">
-      <div class="card" style="padding: 2.5rem; text-align: center;">
-        <h2 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: #fff;">Contact Editorial Desk</h2>
-        <p style="margin-bottom: 1.5rem;">Have questions, feedback, or research contributions regarding YashLab?</p>
-        <p><strong style="color: #fff;">Email:</strong> <a href="mailto:support@yashlab.me" style="color: #60a5fa; text-decoration: none;">support@yashlab.me</a></p>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="footer-container">
-      <div>&copy; 2026 YashLab. All rights reserved. Peer-reviewed digital research portal.</div>
+      <div>&copy; 2026 YashLab. All rights reserved.</div>
       <div class="footer-links">
+        <a href="/">Home</a>
         <a href="/articles/">Articles</a>
-        <a href="#editorial">Editorial Board</a>
-        <a href="/about/">About</a>
+        <a href="/about/">About Us</a>
+        <a href="/contact/">Contact</a>
         <a href="/privacy/">Privacy Policy</a>
         <a href="/terms/">Terms of Service</a>
         <a href="/disclaimer/">Disclaimer</a>
-        <a href="/contact/">Contact</a>
       </div>
     </div>
   </footer>
 
-  
-  <!-- Cookie Consent Banner (Google & GDPR Compliant) -->
   <div id="cookie-consent" style="display:none; position:fixed; bottom:1.5rem; right:1.5rem; max-width:420px; background:rgba(15,23,42,0.95); border:1px solid rgba(59,130,246,0.3); backdrop-filter:blur(12px); border-radius:1rem; padding:1.25rem 1.5rem; z-index:100; box-shadow:0 20px 25px -5px rgba(0,0,0,0.5); font-size:0.85rem; color:#cbd5e1; line-height:1.5;">
     <div style="font-weight:700; color:#fff; margin-bottom:0.35rem; display:flex; align-items:center; gap:0.5rem;">
       <span style="font-size:1.1rem;">🍪</span> Cookie &amp; Privacy Notice
@@ -934,6 +658,5 @@
       } catch(e) {}
     })();
   </script>
-
 </body>
 </html>

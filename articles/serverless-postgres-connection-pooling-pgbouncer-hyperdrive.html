@@ -15,7 +15,7 @@
 
   <!-- Structured Data JSON-LD with Rich Author & FAQ Schemas -->
   <script type="application/ld+json">
-    {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Serverless PostgreSQL Connection Pooling: PgBouncer, Cloudflare Hyperdrive & Neon at Scale","description":"Architecting resilient connection pooling for ephemeral serverless functions, comparing PgBouncer transaction pooling with Cloudflare Hyperdrive, Supabase Supavisor, and Neon serverless driver architectures.","datePublished":"2026-09-13","dateModified":"2026-09-13","mainEntityOfPage":"https://yashlab.me/articles/serverless-postgres-connection-pooling-pgbouncer-hyperdrive.html","author":{"@type":"Person","name":"Marcus Chen","jobTitle":"Principal Distributed Systems Architect & FinOps Advisor","image":"https://yashlab.me/images/authors/marcus-chen.jpg","description":"Marcus Chen is a Principal Systems Architect with over 15 years designing petabyte-scale distributed data pipelines, zero-trust cloud network topographies, and FinOps governance frameworks. Having led infrastructure teams at scale, Marcus writes deeply technical, audit-grade whitepapers on Kubernetes cost optimization, zero-downtime database sharding, and global CDN edge routing.","alumniOf":"M.S. Distributed Computing (Stanford University)","sameAs":"https://www.linkedin.com/in/marcus-chen-cloud-yashlab","worksFor":{"@type":"Organization","name":"YashLab"}},"publisher":{"@type":"Organization","name":"YashLab","url":"https://yashlab.me","logo":{"@type":"ImageObject","url":"https://yashlab.me/images/authors/yash.jpg"}}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why can't I use Prisma's built-in connection pool in serverless environments?","acceptedAnswer":{"@type":"Answer","text":"Prisma's internal pool lives in the memory space of an individual function instance. When 100 serverless function instances spin up concurrently, they create 100 separate client pools, quickly exhausting database connections. An external shared pooler like PgBouncer or Neon is required to coordinate across all instances."}},{"@type":"Question","name":"What is the primary drawback of PgBouncer Transaction Pooling?","acceptedAnswer":{"@type":"Answer","text":"Transaction pooling does not support session-level features like `SET search_path`, temporary tables, or legacy named prepared statements, because consecutive queries from the same client may execute across different underlying server connections."}},{"@type":"Question","name":"When should I choose Cloudflare Hyperdrive over a standard PgBouncer instance?","acceptedAnswer":{"@type":"Answer","text":"Choose Cloudflare Hyperdrive if your application logic runs on edge platforms across multiple global regions and needs to communicate with a single centralized database. Choose self-hosted PgBouncer if your application and database reside in the same VPC or cloud availability zone."}}]}]}
+    {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Serverless PostgreSQL Connection Pooling: PgBouncer, Cloudflare Hyperdrive & Neon at Scale","description":"Architecting resilient connection pooling for ephemeral serverless functions, comparing PgBouncer transaction pooling with Cloudflare Hyperdrive, Supabase Supavisor, and Neon serverless driver architectures.","datePublished":"2026-09-13","dateModified":"2026-09-13","mainEntityOfPage":"https://yashlab.me/articles/serverless-postgres-connection-pooling-pgbouncer-hyperdrive.html","author":{"@type":"Person","name":"Yash","jobTitle":"Software Engineer & Founder","url":"https://yashlab.me/about/","worksFor":{"@type":"Organization","name":"YashLab","url":"https://yashlab.me"}}}},"publisher":{"@type":"Organization","name":"YashLab","url":"https://yashlab.me","logo":{"@type":"ImageObject","url":"https://yashlab.me/images/authors/yash.jpg"}}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Why can't I use Prisma's built-in connection pool in serverless environments?","acceptedAnswer":{"@type":"Answer","text":"Prisma's internal pool lives in the memory space of an individual function instance. When 100 serverless function instances spin up concurrently, they create 100 separate client pools, quickly exhausting database connections. An external shared pooler like PgBouncer or Neon is required to coordinate across all instances."}},{"@type":"Question","name":"What is the primary drawback of PgBouncer Transaction Pooling?","acceptedAnswer":{"@type":"Answer","text":"Transaction pooling does not support session-level features like `SET search_path`, temporary tables, or legacy named prepared statements, because consecutive queries from the same client may execute across different underlying server connections."}},{"@type":"Question","name":"When should I choose Cloudflare Hyperdrive over a standard PgBouncer instance?","acceptedAnswer":{"@type":"Answer","text":"Choose Cloudflare Hyperdrive if your application logic runs on edge platforms across multiple global regions and needs to communicate with a single centralized database. Choose self-hosted PgBouncer if your application and database reside in the same VPC or cloud availability zone."}}]}]}
   </script>
 
   <!-- Open Graph -->
@@ -24,7 +24,7 @@
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://yashlab.me/articles/serverless-postgres-connection-pooling-pgbouncer-hyperdrive.html">
   <meta property="og:site_name" content="YashLab">
-  <meta property="og:image" content="https://yashlab.me/images/authors/marcus-chen.jpg">
+  <meta property="og:image" content="https://yashlab.me/images/authors/yash.jpg">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -397,8 +397,8 @@
       <span>9 min read</span>
       <span>•</span>
       <a href="#author" class="author-link-snippet">
-        <img src="/images/authors/marcus-chen.jpg" alt="Marcus Chen" />
-        <span>By Marcus Chen</span>
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#3b82f6;color:#fff;font-weight:700;font-size:0.75rem;">Y</span>
+        <span>By Yash</span>
       </a>
     </div>
 
@@ -409,7 +409,7 @@
       <ul>
         <li><a href="#sec-0">1. The Ephemeral Connection Dilemma in Serverless Architectures</a></li><li><a href="#sec-1">2. PgBouncer Architecture: Session vs. Transaction vs. Statement Pooling</a></li><li><a href="#sec-2">3. Distributed Edge Connection Pooling with Cloudflare Hyperdrive</a></li><li><a href="#sec-3">4. Cloud-Native Serverless Postgres: Neon and Supabase Supavisor</a></li><li><a href="#sec-4">5. Production Engineering Benchmarks and Architectural Recommendations</a></li>
         <li><a href="#faq">Frequently Asked Questions (FAQs)</a></li>
-        <li><a href="#author">About the Author (Marcus Chen)</a></li>
+        <li><a href="#author">About the Author (Yash)</a></li>
       </ul>
     </div>
 
@@ -469,48 +469,26 @@
     <div class="author-card" id="author">
       <div class="author-card-top">
         <div class="author-avatar-wrap">
-          <img src="/images/authors/marcus-chen.jpg" alt="Marcus Chen" class="author-img" width="84" height="84" loading="lazy" />
-          <div class="author-verified-tick" title="Verified Credentialed Researcher">✓</div>
+          <div style="width:72px; height:72px; border-radius:50%; background:linear-gradient(135deg, #3b82f6, #1d4ed8); display:flex; align-items:center; justify-content:center; color:#fff; font-size:1.8rem; font-weight:800; font-family:'Outfit', sans-serif; box-shadow:0 10px 15px -3px rgba(59,130,246,0.3);">Y</div>
         </div>
         <div class="author-titles">
-          <div class="author-eyebrow">CONTRIBUTING RESEARCH FELLOW</div>
-          <h3 class="author-fullname">Marcus Chen <span class="author-creds-inline">M.S. Distributed Systems, AWS Certified Fellow</span></h3>
-          <div class="author-position">Principal Distributed Systems Architect & FinOps Advisor</div>
+          <div class="author-eyebrow">AUTHOR &amp; FOUNDER</div>
+          <h3 class="author-fullname">Yash</h3>
+          <div class="author-position">Software Engineer &amp; Founder, YashLab</div>
         </div>
       </div>
-      <p class="author-full-bio">Marcus Chen is a Principal Systems Architect with over 15 years designing petabyte-scale distributed data pipelines, zero-trust cloud network topographies, and FinOps governance frameworks. Having led infrastructure teams at scale, Marcus writes deeply technical, audit-grade whitepapers on Kubernetes cost optimization, zero-downtime database sharding, and global CDN edge routing.</p>
+      <p class="author-full-bio">Yash is a full-stack software engineer and systems builder. He created YashLab to document real-world architectural blueprints, database scaling strategies, cloud cost optimization, and developer tools.</p>
       
-      <div class="author-credentials-row">
-        <div class="cred-item">
-          <span class="cred-icon">💼</span>
-          <div>
-            <div class="cred-title">Industry Experience</div>
-            <div class="cred-detail">15+ Years Enterprise Cloud Architecture & FinOps</div>
-          </div>
-        </div>
-        <div class="cred-item">
-          <span class="cred-icon">🎓</span>
-          <div>
-            <div class="cred-title">Degrees &amp; Certifications</div>
-            <div class="cred-detail">M.S. Distributed Computing (Stanford University)</div>
-          </div>
-        </div>
-      </div>
-
       <div class="author-specialties-row">
-        <span class="spec-label">Specialties:</span>
-        <span class="spec-chip">Kubernetes FinOps</span><span class="spec-chip">Zero-Trust Architecture</span><span class="spec-chip">Database Sharding & Replication</span><span class="spec-chip">API Gateway Scaling</span>
+        <span class="spec-label">Focus Areas:</span>
+        <span class="spec-chip">Distributed Systems</span>
+        <span class="spec-chip">Cloud Architecture</span>
+        <span class="spec-chip">Database Scaling</span>
+        <span class="spec-chip">Web Performance</span>
       </div>
 
       <div class="author-card-actions">
-        <div class="editorial-guarantee">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <span>Peer-Reviewed by YashLab Editorial &amp; Actuarial Review Board</span>
-        </div>
-        <a href="https://www.linkedin.com/in/marcus-chen-cloud-yashlab" target="_blank" rel="noopener nofollow" class="linkedin-chip">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.45 1.45 0 1 0-.01-2.9 1.45 1.45 0 0 0 .01 2.9m1.4 9.74V9.89H5.06v8.61h2.8z"/></svg>
-          Professional Profile
-        </a>
+        <a href="/about/" style="color:#60a5fa; text-decoration:none; font-size:0.85rem; font-weight:600;">Learn more about YashLab &rarr;</a>
       </div>
     </div>
   </article>

@@ -1,31 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us & Editorial Board | YashLab Research</title>
-  <meta name="description" content="Learn about YashLab — an independent digital research publication founded in 2026 delivering expert insights into financial planning, healthcare insurance underwriting, and enterprise cloud infrastructure.">
+  <title>About YashLab &amp; Founder | YashLab</title>
+  <meta name="description" content="Learn about YashLab, an independent engineering notebook and technical publication covering distributed systems, cloud architecture, and web performance by Yash.">
+  <meta name="author" content="Yash">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://yashlab.me/about/">
+
+  <!-- Google AdSense Verification -->
   <meta name="google-adsense-account" content="ca-pub-9216546431290162">
   <meta name="google-site-verification" content="2dDw_pcs03JLd_24mHbUK73Cdfig4yxet7tYFa9uyHQ" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9216546431290162" crossorigin="anonymous"></script>
-  <meta property="og:title" content="About Us & Editorial Board | YashLab Research">
-  <meta property="og:description" content="Learn about YashLab — an independent digital research publication founded in 2026 delivering expert insights into financial planning, healthcare insurance underwriting, and enterprise cloud infrastructure.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="About YashLab &amp; Founder | YashLab">
+  <meta property="og:description" content="Systems architecture, cloud infrastructure, and software engineering notes by Yash.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://yashlab.me/about/">
   <meta property="og:site_name" content="YashLab">
+  <meta property="og:image" content="https://yashlab.me/images/authors/yash.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    "name": "About YashLab",
+    "url": "https://yashlab.me/about/",
+    "description": "About YashLab - independent engineering notebook and technical publication founded by Yash.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "YashLab",
+      "url": "https://yashlab.me",
+      "founder": {
+        "@type": "Person",
+        "name": "Yash",
+        "jobTitle": "Founder & Software Engineer"
+      }
+    }
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #0a0e17;
+      --bg: #090d16;
       --card-bg: rgba(255, 255, 255, 0.03);
       --border: rgba(255, 255, 255, 0.08);
       --primary: #3b82f6;
-      --primary-glow: rgba(59, 130, 246, 0.15);
       --text: #f3f4f6;
       --text-muted: #9ca3af;
     }
@@ -41,7 +67,7 @@
     }
     header {
       border-bottom: 1px solid var(--border);
-      background: rgba(10, 14, 23, 0.85);
+      background: rgba(9, 13, 22, 0.85);
       backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
@@ -63,108 +89,116 @@
       text-decoration: none;
     }
     .logo span { color: var(--primary); }
-    nav { display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap; }
-    nav a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    nav a:hover { color: #fff; }
-    nav a.active { color: var(--primary); font-weight: 700; }
+    nav { display: flex; gap: 1.25rem; align-items: center; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: #fff; }
     main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem;
+      max-width: 860px;
+      margin: 3.5rem auto;
+      padding: 0 1.5rem;
       flex-grow: 1;
-      width: 100%;
     }
     .page-badge {
       display: inline-block;
-      padding: 0.35rem 1rem;
-      background: var(--primary-glow);
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      color: #60a5fa;
-      border-radius: 9999px;
       font-size: 0.8rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
     }
     h1 {
       font-family: 'Outfit', sans-serif;
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       font-weight: 800;
-      line-height: 1.3;
-      margin-bottom: 1rem;
       color: #fff;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
     }
-    h2 {
-      font-family: 'Outfit', sans-serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-top: 2.5rem;
-      margin-bottom: 0.75rem;
-      color: #fff;
-    }
-    h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-top: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: #e2e8f0;
-    }
-    p {
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-    }
-    ul, ol {
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-      padding-left: 1.5rem;
-      font-size: 0.95rem;
-    }
-    li { margin-bottom: 0.5rem; }
-    a { color: #60a5fa; }
     .content-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 1rem;
       padding: 2rem;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
     }
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.25rem;
-      margin-top: 1.5rem;
+    .content-card h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.35rem;
+      color: #fff;
+      margin-bottom: 1rem;
     }
-    .team-card {
+    .content-card p {
+      color: #cbd5e1;
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1.2rem;
+    }
+    .content-card ul {
+      margin: 1rem 0 1.25rem 1.5rem;
+      color: #cbd5e1;
+    }
+    .content-card li { margin-bottom: 0.5rem; }
+    
+    .founder-card {
       background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(59, 130, 246, 0.2);
-      border-radius: 1rem;
-      padding: 1.5rem;
-      text-align: center;
+      border: 1px solid var(--border);
+      border-radius: 1.25rem;
+      padding: 2.25rem;
+      margin: 2.5rem 0;
+      display: flex;
+      gap: 2rem;
+      align-items: center;
     }
-    .team-avatar {
-      width: 80px;
-      height: 80px;
+    .founder-avatar {
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid rgba(59, 130, 246, 0.4);
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 2.25rem;
+      font-weight: 800;
+      font-family: 'Outfit', sans-serif;
+      flex-shrink: 0;
+      box-shadow: 0 10px 20px -5px rgba(59, 130, 246, 0.4);
+    }
+    .founder-info h3 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.4rem;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+    .founder-title {
+      font-size: 0.85rem;
+      color: #60a5fa;
+      font-weight: 600;
       margin-bottom: 0.75rem;
     }
-    .team-name { font-weight: 700; color: #fff; font-size: 1rem; }
-    .team-creds { color: #38bdf8; font-size: 0.8rem; font-weight: 600; margin-bottom: 0.25rem; }
-    .team-role { color: #94a3b8; font-size: 0.8rem; margin-bottom: 0.75rem; }
-    .team-bio { color: #cbd5e1; font-size: 0.8rem; text-align: left; line-height: 1.5; }
+    .founder-bio {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .founder-links {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.85rem;
+    }
+    .founder-links a { color: #93c5fd; text-decoration: none; font-weight: 600; }
+    .founder-links a:hover { color: #fff; }
+
     footer {
       border-top: 1px solid var(--border);
-      padding: 2.5rem 1.5rem;
-      background: #06090e;
-      color: var(--text-muted);
-      font-size: 0.85rem;
+      background: rgba(9, 13, 22, 0.95);
+      padding: 2rem 1.5rem;
       margin-top: auto;
     }
     .footer-container {
@@ -175,128 +209,88 @@
       align-items: center;
       flex-wrap: wrap;
       gap: 1rem;
+      font-size: 0.85rem;
     }
     .footer-links { display: flex; gap: 1.25rem; flex-wrap: wrap; }
-    .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.8rem; }
+    .footer-links a { color: var(--text-muted); text-decoration: none; }
     .footer-links a:hover { color: #fff; }
-    @media (max-width: 640px) {
-      h1 { font-size: 1.7rem; }
-      nav { gap: 0.75rem; }
-      nav a { font-size: 0.75rem; }
-    }
-</style>
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "AboutPage",
-    "name": "About YashLab",
-    "url": "https://yashlab.me/about/",
-    "description": "About YashLab — independent research publication delivering expert analysis in healthcare, finance and cloud.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "YashLab",
-      "url": "https://yashlab.me",
-      "foundingDate": "2026",
-      "founder": {
-        "@type": "Person",
-        "name": "Yash",
-        "jobTitle": "Founder & Managing Editor"
-      }
+    @media (max-width: 640px) {
+      .founder-card { flex-direction: column; text-align: center; }
+      .founder-links { justify-content: center; }
     }
-  }
-  </script>
+  </style>
 </head>
 <body>
-  
   <header>
     <div class="header-container">
       <a href="/" class="logo">Yash<span>Lab</span></a>
       <nav>
         <a href="/">Home</a>
-        <a href="/articles/" >Articles</a>
+        <a href="/articles/">Articles</a>
         <a href="/about/" class="active">About</a>
-        <a href="/contact/" >Contact</a>
-        <a href="/privacy/" >Privacy</a>
+        <a href="/contact/">Contact</a>
+        <a href="/privacy/">Privacy</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <span class="page-badge">E-E-A-T Verified • Editorial Standards</span>
-    <h1>About YashLab</h1>
-    
+    <span class="page-badge">About the Project &amp; Author</span>
+    <h1>Engineering Notes, Systems Architecture &amp; Developer Tools</h1>
+
     <div class="content-card">
-      <h2 style="margin-top:0;">Our Mission</h2>
-      <p>YashLab (<a href="https://yashlab.me">yashlab.me</a>) is an independent digital research publication founded in 2026, dedicated to demystifying complex technical, actuarial, and economic structures into actionable, high-fidelity research whitepapers for readers globally.</p>
-      <p>We publish rigorous, peer-reviewed analytical research across three core verticals: <strong>Healthcare Economics & Insurance Underwriting</strong>, <strong>Quantitative Wealth Management & Estate Planning</strong>, and <strong>Enterprise Distributed Cloud Infrastructure</strong>.</p>
-      <p>Our goal is to provide objective, commercially unbiased, educational insights that empower policyholders, wealth managers, and distributed systems engineers to make better-informed decisions.</p>
+      <h2>What is YashLab?</h2>
+      <p>YashLab (<a href="https://yashlab.me" style="color:#60a5fa; text-decoration:none;">yashlab.me</a>) is an independent engineering publication and open digital laboratory. It was created as a dedicated space to document practical solutions to complex software architecture problems, performance bottlenecks, and infrastructure challenges.</p>
+      <p>Modern cloud systems often suffer from over-engineering, opaque configuration layers, and buzzword-heavy documentation. YashLab aims to cut through the noise with concrete code samples, benchmark comparisons, and architecture breakdowns tested in real production environments.</p>
+    </div>
+
+    <div class="founder-card">
+      <div class="founder-avatar">Y</div>
+      <div class="founder-info">
+        <h3>Yash</h3>
+        <div class="founder-title">Founder, Creator &amp; Software Engineer</div>
+        <p class="founder-bio">Hi, I'm Yash. I'm a full-stack developer and cloud infrastructure enthusiast. I build developer tools and spend my time exploring distributed consensus, database connection pooling, high-throughput Redis caching, and edge computing.</p>
+        <div class="founder-links">
+          <a href="https://github.com/YASH69uahsg" target="_blank" rel="noopener">GitHub Profile &rarr;</a>
+          <a href="/contact/">Contact Yash &rarr;</a>
+        </div>
+      </div>
     </div>
 
     <div class="content-card">
-      <h2 style="margin-top:0;">Editorial Standards & Peer Review</h2>
-      <p>Every whitepaper published on YashLab undergoes a rigorous peer-review process. Our editorial standards include:</p>
+      <h2>Core Engineering Principles</h2>
+      <p>Every article, tutorial, and technical blueprint published on YashLab adheres to our core publishing values:</p>
       <ul>
-        <li><strong>Factual Verification:</strong> All claims, statistics, and regulatory citations are cross-referenced with official sources including IRDAI bulletins, SEC filings, and NIST frameworks.</li>
-        <li><strong>Expert Authorship:</strong> Each article is authored by a credentialed domain expert — medical underwriters, chartered financial analysts, or principal infrastructure engineers.</li>
-        <li><strong>Zero Commercial Bias:</strong> YashLab does not accept sponsored content or paid placements. Our research maintains complete editorial independence.</li>
-        <li><strong>Actuarial Model Validation:</strong> Financial and insurance analyses undergo actuarial model evaluation before publication.</li>
-        <li><strong>Regular Updates:</strong> Published articles are periodically reviewed and updated to reflect the latest regulatory changes and market conditions.</li>
+        <li><strong>Code-First &amp; Hands-On:</strong> We prioritize reproducible code snippets, configuration templates, and terminal commands over abstract theory.</li>
+        <li><strong>Benchmark Grounded:</strong> Claims regarding latency reduction, throughput scaling, or resource usage are accompanied by real profiling data and explain plans.</li>
+        <li><strong>Zero Commercial Bias:</strong> YashLab does not accept paid placements, sponsored reviews, or affiliate kickbacks. If a tool or library is discussed, it is because of genuine technical merit.</li>
+        <li><strong>Living Documentation:</strong> Software evolves rapidly. We regularly revisit and update published guides to reflect changes in runtime versions, security standards, and framework APIs.</li>
       </ul>
     </div>
 
-    <h2>Editorial Board & Senior Research Fellows</h2>
-    <p>All YashLab whitepapers are authored and reviewed by credentialed professionals adhering to strict peer-review and fact-checking protocols.</p>
-    
-    <div class="team-grid">
-      <div class="team-card">
-        <img src="/images/authors/yash.jpg" alt="Yash" class="team-avatar" width="80" height="80" loading="lazy">
-        <div class="team-name">Yash</div>
-        <div class="team-creds">B.Tech, Tech Entrepreneur</div>
-        <div class="team-role">Founder & Managing Editor, YashLab</div>
-        <p class="team-bio">Directs digital publication infrastructure, editorial integrity guidelines, and open analytical research across healthcare economics and distributed systems. Under his leadership, YashLab delivers peer-vetted research whitepapers for global readers.</p>
-      </div>
-      <div class="team-card">
-        <img src="/images/authors/alistair-vance.jpg" alt="Dr. Alistair Vance" class="team-avatar" width="80" height="80" loading="lazy">
-        <div class="team-name">Dr. Alistair Vance</div>
-        <div class="team-creds">M.D., Ph.D. (Health Economics), FHEA</div>
-        <div class="team-role">Senior Healthcare Economics Analyst</div>
-        <p class="team-bio">Over 18 years in private health underwriting and critical illness microeconomics. Former Underwriting Governance Director at Aegis Health Re. Ph.D. Health Economics from Johns Hopkins University.</p>
-      </div>
-      <div class="team-card">
-        <img src="/images/authors/elena-rostova.jpg" alt="Elena Rostova" class="team-avatar" width="80" height="80" loading="lazy">
-        <div class="team-name">Elena Rostova</div>
-        <div class="team-creds">CFP®, FSA (Fellow of the Society of Actuaries)</div>
-        <div class="team-role">Lead Actuarial Risk Consultant</div>
-        <p class="team-bio">Certified Financial Planner specializing in policyholder risk modeling, family floater underwriting, and out-of-pocket health expenditure mitigation. M.Sc. Actuarial Science from LSE.</p>
-      </div>
-      <div class="team-card">
-        <img src="/images/authors/rajiv-singhania.jpg" alt="Rajiv Singhania" class="team-avatar" width="80" height="80" loading="lazy">
-        <div class="team-name">Rajiv Singhania</div>
-        <div class="team-creds">CFA®, FRM®, CAIA</div>
-        <div class="team-role">Chartered Financial Analyst & Research Lead</div>
-        <p class="team-bio">16 years of portfolio management across London and Mumbai institutional asset desks, specializing in sovereign yields, REIT valuation, and safe retirement corpus withdrawals. MBA from Wharton, CFA Charterholder.</p>
-      </div>
-      <div class="team-card">
-        <img src="/images/authors/marcus-chen.jpg" alt="Marcus Chen" class="team-avatar" width="80" height="80" loading="lazy">
-        <div class="team-name">Marcus Chen</div>
-        <div class="team-creds">M.S. Distributed Systems, AWS Fellow</div>
-        <div class="team-role">Principal Systems Architect & FinOps Advisor</div>
-        <p class="team-bio">15+ years architecting petabyte-scale distributed data pipelines, zero-trust cloud network topographies, and FinOps cost governance frameworks. M.S. from Stanford University.</p>
-      </div>
+    <div class="content-card">
+      <h2>Tech Stack &amp; Infrastructure</h2>
+      <p>YashLab is hosted on global edge infrastructure ensuring sub-second response times and high availability. The underlying tooling and frameworks we regularly write about include:</p>
+      <ul>
+        <li><strong>Application Frameworks:</strong> Next.js (App Router, Server Components, Partial Prerendering), Node.js, TypeScript.</li>
+        <li><strong>Databases &amp; Caching:</strong> PostgreSQL (PgBouncer, Neon, Supabase), Redis (Redlock, Lua scripts), ClickHouse.</li>
+        <li><strong>Cloud &amp; DevOps:</strong> Cloudflare (Workers, Hyperdrive, Edge Caching), Docker, Kubernetes, AWS, Sentry.</li>
+      </ul>
     </div>
 
-    <div class="content-card" style="margin-top:2rem; text-align:center;">
-      <h2 style="margin-top:0;">Reach Our Editorial Team</h2>
-      <p>For research inquiries, corrections, partnership proposals, or content submissions:</p>
-      <p><strong style="color:#fff;">Email:</strong> <a href="mailto:support@yashlab.me">support@yashlab.me</a></p>
-      <p><strong style="color:#fff;">Website:</strong> <a href="https://yashlab.me">yashlab.me</a></p>
+    <div class="content-card" style="text-align:center;">
+      <h2>Have Feedback or Collaboration Ideas?</h2>
+      <p>Whether you spotted an errata in one of our system design papers, have questions about database scaling, or want to discuss open-source collaboration, we'd love to hear from you.</p>
+      <p style="margin-top:1rem;">
+        <a href="/contact/" style="background:#3b82f6; color:#fff; text-decoration:none; padding:0.6rem 1.5rem; border-radius:9999px; font-weight:600; font-size:0.9rem; display:inline-block;">Get in Touch</a>
+      </p>
     </div>
   </main>
-  
+
   <footer>
     <div class="footer-container">
-      <div>&copy; 2026 YashLab (yashlab.me). All rights reserved.</div>
+      <div>&copy; 2026 YashLab. All rights reserved.</div>
       <div class="footer-links">
         <a href="/">Home</a>
         <a href="/articles/">Articles</a>
@@ -309,5 +303,31 @@
     </div>
   </footer>
 
+  <div id="cookie-consent" style="display:none; position:fixed; bottom:1.5rem; right:1.5rem; max-width:420px; background:rgba(15,23,42,0.95); border:1px solid rgba(59,130,246,0.3); backdrop-filter:blur(12px); border-radius:1rem; padding:1.25rem 1.5rem; z-index:100; box-shadow:0 20px 25px -5px rgba(0,0,0,0.5); font-size:0.85rem; color:#cbd5e1; line-height:1.5;">
+    <div style="font-weight:700; color:#fff; margin-bottom:0.35rem; display:flex; align-items:center; gap:0.5rem;">
+      <span style="font-size:1.1rem;">🍪</span> Cookie &amp; Privacy Notice
+    </div>
+    <p style="margin-bottom:0.85rem;">We use cookies to personalize content and ads via Google AdSense and analyze audience analytics in accordance with our <a href="/privacy/" style="color:#60a5fa; text-decoration:underline;">Privacy Policy</a>.</p>
+    <div style="display:flex; justify-content:flex-end; gap:0.75rem;">
+      <button id="accept-cookies-btn" style="background:#3b82f6; color:#fff; border:none; padding:0.45rem 1.25rem; border-radius:9999px; font-weight:600; font-size:0.8rem; cursor:pointer; transition:background 0.2s;">Accept All</button>
+    </div>
+  </div>
+  <script>
+    (function() {
+      try {
+        if (!localStorage.getItem('yashlab_cookies_accepted')) {
+          var el = document.getElementById('cookie-consent');
+          if (el) el.style.display = 'block';
+          var btn = document.getElementById('accept-cookies-btn');
+          if (btn) {
+            btn.onclick = function() {
+              localStorage.setItem('yashlab_cookies_accepted', 'true');
+              el.style.display = 'none';
+            };
+          }
+        }
+      } catch(e) {}
+    })();
+  </script>
 </body>
 </html>

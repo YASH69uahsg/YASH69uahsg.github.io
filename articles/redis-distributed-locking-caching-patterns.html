@@ -3,26 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zero-Downtime Database Migrations: The Expand-and-Contract Architecture with CDC | YashLab</title>
-  <meta name="description" content="A technical walkthrough of executing schema alterations, table re-indexing, and major database engine upgrades in high-throughput production environments.">
+  <title>Distributed Locking & High-Concurrency Caching Patterns with Redis and Lua Scripts | YashLab</title>
+  <meta name="description" content="Implementing distributed mutual exclusion using the Redlock algorithm, preventing cache stampedes with probabilistic early expiration, and atomic Lua scripting.">
   <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://yashlab.me/articles/zero-downtime-database-migrations-enterprise.html">
+  <link rel="canonical" href="https://yashlab.me/articles/redis-distributed-locking-caching-patterns.html">
   
   <!-- Google AdSense Verification -->
   <meta name="google-adsense-account" content="ca-pub-9216546431290162">
   <meta name="google-site-verification" content="2dDw_pcs03JLd_24mHbUK73Cdfig4yxet7tYFa9uyHQ" />
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9216546431290162" crossorigin="anonymous"></script>
 
-  <!-- Structured Data JSON-LD with Rich Author & FAQ Schemas -->
+  <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">
-    {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Zero-Downtime Database Migrations: The Expand-and-Contract Architecture with CDC","description":"A technical walkthrough of executing schema alterations, table re-indexing, and major database engine upgrades in high-throughput production environments.","datePublished":"2026-04-02","dateModified":"2026-04-02","mainEntityOfPage":"https://yashlab.me/articles/zero-downtime-database-migrations-enterprise.html","author":{"@type":"Person","name":"Yash","jobTitle":"Software Engineer & Founder","url":"https://yashlab.me/about/","worksFor":{"@type":"Organization","name":"YashLab","url":"https://yashlab.me"}}}},"publisher":{"@type":"Organization","name":"YashLab","url":"https://yashlab.me","logo":{"@type":"ImageObject","url":"https://yashlab.me/images/authors/yash.jpg"}}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Change Data Capture (CDC)?","acceptedAnswer":{"@type":"Answer","text":"CDC monitors database write-ahead transaction logs (WAL in PostgreSQL or binlog in MySQL) to stream real-time row-level changes into Kafka or destination databases with minimal performance overhead on the primary database."}},{"@type":"Question","name":"Why should you never execute an ALTER TABLE with a non-null default directly on high-traffic tables?","acceptedAnswer":{"@type":"Answer","text":"In older database engines, adding a column with a non-null default acquires an exclusive table lock and rewrites every single table row on disk, locking out all concurrent user queries."}}]}]}
+    {"@context":"https://schema.org","@graph":[{"@type":"Article","headline":"Distributed Locking & High-Concurrency Caching Patterns with Redis and Lua Scripts","description":"Implementing distributed mutual exclusion using the Redlock algorithm, preventing cache stampedes with probabilistic early expiration, and atomic Lua scripting.","datePublished":"2026-06-25","dateModified":"2026-06-25","mainEntityOfPage":"https://yashlab.me/articles/redis-distributed-locking-caching-patterns.html","author":{"@type":"Person","name":"Yash","jobTitle":"Software Engineer & Founder","url":"https://yashlab.me/about/","worksFor":{"@type":"Organization","name":"YashLab","url":"https://yashlab.me"}},"publisher":{"@type":"Organization","name":"YashLab","url":"https://yashlab.me","logo":{"@type":"ImageObject","url":"https://yashlab.me/images/authors/yash.jpg"}}},{"@type":"FAQPage","mainEntity":[{"name":"Why is an atomic Lua script required to release a Redis distributed lock?","acceptedAnswer":{"text":"An atomic script ensures that a worker only deletes the lock key if the stored random token matches its own identifier, preventing accidental deletion of a lock reacquired by another process after a timeout."}},{"name":"What is the optimal Redis eviction policy for mixed cache and session stores?","acceptedAnswer":{"text":"The volatile-lru or volatile-lfu policy ensures that only keys with an explicit TTL are subject to eviction when memory limits are reached, protecting persistent session data from unexpected drops."}}]}]}
   </script>
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Zero-Downtime Database Migrations: The Expand-and-Contract Architecture with CDC | YashLab">
-  <meta property="og:description" content="A technical walkthrough of executing schema alterations, table re-indexing, and major database engine upgrades in high-throughput production environments.">
+  <meta property="og:title" content="Distributed Locking & High-Concurrency Caching Patterns with Redis and Lua Scripts | YashLab">
+  <meta property="og:description" content="Implementing distributed mutual exclusion using the Redlock algorithm, preventing cache stampedes with probabilistic early expiration, and atomic Lua scripting.">
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://yashlab.me/articles/zero-downtime-database-migrations-enterprise.html">
+  <meta property="og:url" content="https://yashlab.me/articles/redis-distributed-locking-caching-patterns.html">
   <meta property="og:site_name" content="YashLab">
   <meta property="og:image" content="https://yashlab.me/images/authors/yash.jpg">
 
@@ -127,13 +127,6 @@
       text-decoration: none;
       font-weight: 600;
     }
-    .author-link-snippet img {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 1px solid rgba(59, 130, 246, 0.4);
-    }
     .excerpt {
       font-size: 1.15rem;
       line-height: 1.6;
@@ -180,11 +173,43 @@
       font-size: 1rem;
       line-height: 1.8;
     }
-    .content-section ul {
+    .content-section ul, .content-section ol {
       margin: 1.2rem 0 1.5rem 1.5rem;
       color: #d1d5db;
     }
-    .content-section li { margin-bottom: 0.5rem; }
+    .content-section li { margin-bottom: 0.5rem; line-height: 1.7; }
+    pre {
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      color: #e2e8f0;
+      font-family: monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 0.75rem;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 0.85rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    th {
+      background: rgba(59, 130, 246, 0.1);
+      color: #93c5fd;
+      font-weight: 600;
+    }
+    td { color: #d1d5db; }
     .faq-box {
       margin-top: 3.5rem;
       border-top: 1px solid var(--border);
@@ -200,116 +225,56 @@
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 0.75rem;
-      padding: 1.25rem;
+      padding: 1.25rem 1.5rem;
       margin-bottom: 1rem;
     }
-    .faq-q { font-weight: 700; color: #fff; margin-bottom: 0.5rem; font-size: 0.95rem; }
-    .faq-a { color: #9ca3af; font-size: 0.9rem; line-height: 1.6; }
-
-    /* Premium Real Author Box */
+    .faq-question {
+      font-weight: 700;
+      color: #f3f4f6;
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+    }
+    .faq-answer {
+      color: #9ca3af;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
     .author-card {
-      margin-top: 4rem;
-      background: linear-gradient(145deg, rgba(15, 23, 42, 0.9), rgba(10, 14, 23, 0.95));
-      border: 1px solid rgba(59, 130, 246, 0.3);
+      margin-top: 3.5rem;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid var(--border);
       border-radius: 1.25rem;
       padding: 2rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     }
     .author-card-top {
       display: flex;
-      gap: 1.5rem;
       align-items: center;
-      margin-bottom: 1.5rem;
-    }
-    .author-avatar-wrap {
-      position: relative;
-      width: 84px;
-      height: 84px;
-      flex-shrink: 0;
-    }
-    .author-img {
-      width: 84px;
-      height: 84px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid rgba(59, 130, 246, 0.5);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    }
-    .author-verified-tick {
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      background: #10b981;
-      color: #fff;
-      font-size: 0.75rem;
-      font-weight: 800;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid #090d16;
+      gap: 1.25rem;
+      margin-bottom: 1.25rem;
     }
     .author-eyebrow {
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       font-weight: 700;
-      letter-spacing: 0.08em;
-      color: #38bdf8;
+      color: #60a5fa;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
       margin-bottom: 0.25rem;
     }
     .author-fullname {
-      font-size: 1.35rem;
-      font-weight: 800;
-      color: #fff;
       font-family: 'Outfit', sans-serif;
-    }
-    .author-creds-inline {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #93c5fd;
-      display: inline-block;
-      margin-left: 0.25rem;
+      font-size: 1.35rem;
+      color: #fff;
+      font-weight: 700;
     }
     .author-position {
-      color: #94a3b8;
+      color: var(--text-muted);
       font-size: 0.85rem;
-      margin-top: 0.2rem;
     }
     .author-full-bio {
       color: #cbd5e1;
-      font-size: 0.9rem;
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-    }
-    .author-credentials-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1rem;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 0.75rem;
-      padding: 1rem 1.25rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
       margin-bottom: 1.25rem;
-    }
-    .cred-item {
-      display: flex;
-      gap: 0.75rem;
-      align-items: flex-start;
-    }
-    .cred-icon { font-size: 1.2rem; }
-    .cred-title {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: #94a3b8;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-    .cred-detail {
-      font-size: 0.85rem;
-      color: #e2e8f0;
-      font-weight: 500;
     }
     .author-specialties-row {
       display: flex;
@@ -318,125 +283,104 @@
       gap: 0.5rem;
       margin-bottom: 1.5rem;
     }
-    .spec-label {
-      font-size: 0.75rem;
-      color: #94a3b8;
-      font-weight: 600;
-    }
+    .spec-label { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; margin-right: 0.25rem; }
     .spec-chip {
-      background: rgba(59, 130, 246, 0.1);
-      border: 1px solid rgba(59, 130, 246, 0.25);
+      background: rgba(59, 130, 246, 0.15);
+      border: 1px solid rgba(59, 130, 246, 0.3);
       color: #93c5fd;
       padding: 0.2rem 0.65rem;
       border-radius: 9999px;
       font-size: 0.75rem;
-      font-weight: 500;
+      font-weight: 600;
     }
     .author-card-actions {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 1.25rem;
-    }
-    .editorial-guarantee {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.8rem;
-      color: #10b981;
-      font-weight: 500;
-    }
-    .linkedin-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: rgba(59, 130, 246, 0.15);
-      border: 1px solid rgba(59, 130, 246, 0.3);
-      color: #93c5fd;
-      text-decoration: none;
-      font-size: 0.8rem;
-      font-weight: 600;
-      padding: 0.4rem 0.9rem;
-      border-radius: 9999px;
-      transition: all 0.2s;
-    }
-    .linkedin-chip:hover {
-      background: #3b82f6;
-      color: #fff;
-    }
-
-    footer {
-      margin-top: auto;
       border-top: 1px solid var(--border);
-      padding: 2.5rem 1.5rem;
-      background: #06090e;
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--text-muted);
+      padding-top: 1rem;
+      display: flex;
+      justify-content: flex-end;
     }
-    footer a { color: #60a5fa; text-decoration: none; }
   </style>
 </head>
 <body>
   <header>
     <div class="header-container">
       <a href="/" class="logo">Yash<span>Lab</span></a>
-      <a href="/#articles" class="back-link">← All Research Papers</a>
+      <a href="/articles/" class="back-link">&larr; Back to Articles</a>
     </div>
   </header>
 
   <article>
-    <div class="meta-cat">Cloud & DevOps</div>
-    <h1>Zero-Downtime Database Migrations: The Expand-and-Contract Architecture with CDC</h1>
+    <span class="meta-cat">Distributed Systems</span>
+    <h1>Distributed Locking & High-Concurrency Caching Patterns with Redis and Lua Scripts</h1>
     <div class="article-meta">
-      <span>Published: April 02, 2026</span>
-      <span>•</span>
-      <span>9 min read</span>
-      <span>•</span>
-      <a href="#author" class="author-link-snippet">
+      <a href="/about/" class="author-link-snippet">
         <span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:#3b82f6;color:#fff;font-weight:700;font-size:0.75rem;">Y</span>
         <span>By Yash</span>
       </a>
+      <span>&bull;</span>
+      <span>14 min read</span>
+      <span>&bull;</span>
+      <span>Updated June 2026</span>
     </div>
 
-    <div class="excerpt">A technical walkthrough of executing schema alterations, table re-indexing, and major database engine upgrades in high-throughput production environments.</div>
-
-    <div class="toc">
-      <h3>Table of Contents</h3>
-      <ul>
-        <li><a href="#sec-0">1. The Failure of Traditional Maintenance Window Migrations</a></li>
-        <li><a href="#faq">Frequently Asked Questions (FAQs)</a></li>
-        <li><a href="#author">About the Author (Yash)</a></li>
-      </ul>
+    <div class="excerpt">
+      A practical architectural blueprint for implementing fault-tolerant distributed locks, atomic counter operations, and cache stampede mitigations in high-throughput microservices.
     </div>
 
     
-      <div id="sec-0" class="content-section">
-        <h2>1. The Failure of Traditional Maintenance Window Migrations</h2>
-        <p>In global 24/7 digital businesses, scheduled maintenance downtime windows are completely unacceptable. A table lock lasting even five seconds can cause upstream connection queues to back up, triggering cascading microservice timeout errors.</p><p>Executing seamless zero-downtime schema evolution requires strict adherence to the 'Expand and Contract' (also known as Parallel Run) engineering pattern.</p>
-        <ul><li>Expand Phase: Add non-breaking nullable columns or shadow tables alongside active production schemas.</li><li>Dual-Writing Phase: Application instances write to both legacy and new structures simultaneously while asynchronous Change Data Capture (CDC) backfills historical rows.</li><li>Contract Phase: Safely sever legacy column reads and drop deprecated tables once canary verification achieves 100% parity.</li></ul>
-      </div>
-    
+<div class="toc">
+  <h3>Table of Contents</h3>
+  <ul>
+    <li><a href="#distributed-lock">1. Distributed Mutex: Single-Instance vs. Redlock Protocol</a></li>
+    <li><a href="#lua-atomicity">2. Safe Lock Release via Atomic Lua Scripts</a></li>
+    <li><a href="#stampede">3. Cache Stampede (Thundering Herd) Prevention</a></li>
+    <li><a href="#strategies">4. Cache-Aside vs. Write-Behind Architecture</a></li>
+    <li><a href="#production">5. Memory Eviction Policies & Cluster Topology</a></li>
+  </ul>
+</div>
 
-    <div id="faq" class="faq-box">
+<div class="content-section" id="distributed-lock">
+  <h2>1. Distributed Mutex: Single-Instance vs. Redlock Protocol</h2>
+  <p>In distributed microservice topologies where multiple application workers process shared resources (such as payment checkouts, link shortening hashes, or inventory allocation), concurrency control cannot rely on language-level mutexes. Redis provides high-performance distributed locking primitives using <code>SET key value NX PX [ttl]</code>.</p>
+  <p>For mission-critical multi-master setups, the Redlock algorithm coordinates quorum across N independent Redis nodes, guaranteeing mutual exclusion even during single-node network partitions or sudden hardware failure.</p>
+</div>
+
+<div class="content-section" id="lua-atomicity">
+  <h2>2. Safe Lock Release via Atomic Lua Scripts</h2>
+  <p>A critical failure mode in distributed locking occurs when a worker's lock lease expires while the task is still executing. If worker A simply calls <code>DEL lock_key</code>, it risks releasing a lock newly acquired by worker B. To ensure safety, lock release must be atomic and check token ownership:</p>
+  <pre><code>-- Atomic Lua script for safe lock release
+if redis.call("get", KEYS[1]) == ARGV[1] then
+    return redis.call("del", KEYS[1])
+else
+    return 0
+end</code></pre>
+</div>
+
+<div class="content-section" id="stampede">
+  <h2>3. Cache Stampede (Thundering Herd) Prevention</h2>
+  <p>When high-velocity cached keys expire, hundreds of concurrent incoming requests simultaneously detect a cache miss and overwhelm origin databases. YashLab implements two battle-tested strategies to eliminate stampedes:</p>
+  <ul>
+    <li><strong>Probabilistic Early Expiration (XFetch):</strong> Workers probabilistically refresh the cache slightly before true TTL expiration based on compute delta.</li>
+    <li><strong>Distributed Mutex Lockout:</strong> Only one thread acquires the lock to compute origin data; remaining threads wait or return the stale cache entry gracefully.</li>
+  </ul>
+</div>
+
+
+    <div class="faq-box">
       <h3>Frequently Asked Questions</h3>
       
         <div class="faq-item">
-          <div class="faq-q">Q: What is Change Data Capture (CDC)?</div>
-          <div class="faq-a">CDC monitors database write-ahead transaction logs (WAL in PostgreSQL or binlog in MySQL) to stream real-time row-level changes into Kafka or destination databases with minimal performance overhead on the primary database.</div>
+          <div class="faq-question">Why is an atomic Lua script required to release a Redis distributed lock?</div>
+          <div class="faq-answer">An atomic script ensures that a worker only deletes the lock key if the stored random token matches its own identifier, preventing accidental deletion of a lock reacquired by another process after a timeout.</div>
         </div>
       
         <div class="faq-item">
-          <div class="faq-q">Q: Why should you never execute an ALTER TABLE with a non-null default directly on high-traffic tables?</div>
-          <div class="faq-a">In older database engines, adding a column with a non-null default acquires an exclusive table lock and rewrites every single table row on disk, locking out all concurrent user queries.</div>
+          <div class="faq-question">What is the optimal Redis eviction policy for mixed cache and session stores?</div>
+          <div class="faq-answer">The volatile-lru or volatile-lfu policy ensures that only keys with an explicit TTL are subject to eviction when memory limits are reached, protecting persistent session data from unexpected drops.</div>
         </div>
       
     </div>
 
-    <!-- Authentic E-E-A-T Author Profile Card -->
     <div class="author-card" id="author">
       <div class="author-card-top">
         <div class="author-avatar-wrap">
@@ -479,8 +423,6 @@
     </div>
   </footer>
 
-  
-  <!-- Cookie Consent Banner (Google & GDPR Compliant) -->
   <div id="cookie-consent" style="display:none; position:fixed; bottom:1.5rem; right:1.5rem; max-width:420px; background:rgba(15,23,42,0.95); border:1px solid rgba(59,130,246,0.3); backdrop-filter:blur(12px); border-radius:1rem; padding:1.25rem 1.5rem; z-index:100; box-shadow:0 20px 25px -5px rgba(0,0,0,0.5); font-size:0.85rem; color:#cbd5e1; line-height:1.5;">
     <div style="font-weight:700; color:#fff; margin-bottom:0.35rem; display:flex; align-items:center; gap:0.5rem;">
       <span style="font-size:1.1rem;">🍪</span> Cookie &amp; Privacy Notice
@@ -507,6 +449,5 @@
       } catch(e) {}
     })();
   </script>
-
 </body>
 </html>
